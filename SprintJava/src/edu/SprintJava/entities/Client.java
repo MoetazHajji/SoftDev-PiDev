@@ -15,18 +15,20 @@ public class Client {
     private String prenom;
     private String date_naissance;
     private String pays_ville;
-    private String email;
     private int mobile;
+    private String email;
+    private String password;
     private String genre;
 
-    public Client(int id, String nom, String prenom, String date_naissance, String pays_ville, String email, int mobile, String genre) {
+    public Client(int id, String nom, String prenom, String date_naissance, String pays_ville,int mobile, String email, String password, String genre) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.date_naissance = date_naissance;
         this.pays_ville = pays_ville;
-        this.email = email;
         this.mobile = mobile;
+        this.email = email;
+        this.password=password;
         this.genre = genre;
     }
 
@@ -99,7 +101,16 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance + ", pays_ville=" + pays_ville + ", email=" + email + ", mobile=" + mobile + ", genre=" + genre +'}'+"\n";
+        return "Client{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance + 
+                ", pays_ville=" + pays_ville + ", mobile=" + mobile + ", email=" + email + ", password=" + password + ", genre=" + genre +'}'+"\n";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     

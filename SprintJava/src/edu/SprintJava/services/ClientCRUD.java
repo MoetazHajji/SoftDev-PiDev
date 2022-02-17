@@ -23,16 +23,17 @@ import java.util.logging.Logger;
 public class ClientCRUD {
     public void ajouterClient(Client cl){
         try {
-            String requete = "insert into client(id,nom,prenom,date_naissance,pays_ville,email,mobile,genre)"
-                    + "values(?,?,?,?,?,?,?,?)";
+            String requete = "insert into client(id,nom,prenom,date_naissance,pays_ville,mobile,email,password,genre)"
+                    + "values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst=MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setInt(1,cl.getId());
             pst.setString(2,cl.getNom());
             pst.setString(3,cl.getPrenom());
             pst.setString(4,cl.getDate_naissance());
             pst.setString(5,cl.getPays_ville());
-            pst.setString(6,cl.getEmail());
-            pst.setInt(7,cl.getMobile());
+            pst.setInt(6,cl.getMobile());
+            pst.setString(7,cl.getEmail());
+            pst.setString(8,cl.getPassword());
             pst.setString(8,cl.getGenre());
             pst.executeUpdate();
             System.err.println("Client Ajoutée");
@@ -55,8 +56,9 @@ public class ClientCRUD {
                 cl.setPrenom(rs.getString("prenom"));
                 cl.setDate_naissance(rs.getString("date_naissance"));
                 cl.setPays_ville(rs.getString("pays_ville"));
+                cl.setMobile(rs.getInt(6));
                 cl.setEmail(rs.getString("email"));
-                cl.setMobile(rs.getInt(7));
+                cl.setPassword(rs.getString("password"));
                 cl.setGenre(rs.getString("genre"));
                 ClientList.add(cl);
             }
@@ -65,11 +67,11 @@ public class ClientCRUD {
         } 
         return ClientList;
     }
-    public void modifierClient(int id_c,String nom_c,String prenom_c,String date_naissance_c,String pays_ville_c,String email_c,int mobile_c,String genre_c){
+    public void modifierClient(int id_c,String nom_c,String prenom_c,String date_naissance_c,String pays_ville_c,int mobile_c,String email_c,String password_c,String genre_c){
         try {
             String requete="UPDATE client SET"
                     + " `id`='"+id_c+"' ,`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"',`pays_ville`='"+prenom_c+"'"
-                    + ",`email` ='"+email_c+"' , `mobile`='"+mobile_c+"',`genre`='"+genre_c+"' where `id`='"+id_c+"' ";
+                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `password`='"+password_c+"',`genre`='"+genre_c+"' where `id`='"+id_c+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");

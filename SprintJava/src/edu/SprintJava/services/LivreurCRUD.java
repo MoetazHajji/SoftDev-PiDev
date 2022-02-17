@@ -21,12 +21,15 @@ import java.util.List;
 public class LivreurCRUD {
     public void ajouterLivreur(Livreur a){
         try {
-            String requete = "insert into livreur(id,nom,prenom)"
-                    + "values(?,?,?)";
+            String requete = "insert into livreur(id,nom,prenom,email,username,password)"
+                    + "values(?,?,?,?,?,?)";
             PreparedStatement pst=MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setInt(1,a.getId());
             pst.setString(2,a.getNom());
             pst.setString(3,a.getPrenom());
+            pst.setString(4,a.getEmail());
+            pst.setString(5,a.getPrenom());
+            pst.setString(6,a.getPassword());
             pst.executeUpdate();
             System.err.println("Livreur Ajoutée");
         } catch (SQLException ex) {
@@ -45,6 +48,9 @@ public class LivreurCRUD {
                 li.setId(rs.getInt(1));
                 li.setNom(rs.getString("nom"));
                 li.setPrenom(rs.getString("prenom"));
+                li.setEmail(rs.getString("email"));
+                li.setUsername(rs.getString("username"));
+                li.setPassword(rs.getString("password"));
                 LivreurList.add(li);
             }
         } catch (SQLException ex) {
@@ -53,9 +59,10 @@ public class LivreurCRUD {
         return LivreurList;
     }
     
-    public void modifierLivreur(int id_l,String nom_l,String prenom_l){
+    public void modifierLivreur(int id_l,String nom_l,String prenom_l,String email_l,String username_l,String password_l){
         try {
-            String requete="UPDATE livreur SET `id`='"+id_l+"' ,`nom`='"+nom_l+"' , `prenom`='"+prenom_l+"'  where `id`='"+id_l+"' ";
+            String requete="UPDATE livreur SET `id`='"+id_l+"' ,`nom`='"+nom_l+"' , `prenom`='"+prenom_l+"'  "
+                    + ", `prenom`='"+email_l+"' , `prenom`='"+username_l+"' , `prenom`='"+password_l+"'  where `id`='"+id_l+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");
