@@ -13,9 +13,13 @@ import edu.SprintJava.services.AdminCRUD;
  */
 public class Session {
     private static int idAdmin;
+
+    public static void start() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    public void start(int currentUserID){
-        idAdmin=currentUserID;
+    public int start(int currentUserID){
+        return currentUserID;
     }
     
     public static int getCurrentSession() throws Exception {

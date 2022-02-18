@@ -13,6 +13,7 @@ import edu.SprintJava.entities.Session;
 import edu.SprintJava.services.AdminCRUD;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.LivreurCRUD;
+import edu.SprintJava.utils.ControleSaisie;
 //import edu.SprintJava.services.UserService;
 import edu.SprintJava.utils.MyConnection;
 
@@ -34,7 +35,7 @@ public class main {
         // adc.ajouterAdmin(ad1);
         //adc.ajouterAdmin(ad2);
         //System.out.println(adc.ListerAdmin());
-        adc.modifierAdmin(8965, "oihjlk", "vdfsg",5343, "email", "jhjhuiigu","ezaqsd","kjg");
+        //adc.modifierAdmin(8965, "oihjlk", "vdfsg",5343, "email", "jhjhuiigu","ezaqsd","kjg");
         //adc.supprimerAdmin(ad);
 //        Client c=new Client(89658, "ahmed", "fazeni", "17/05/199", "tunis-ariana", "ahmed.fazeni@esprit.tn", 98563214, "homme");
 //        Client c1=new Client(3513, "dsfgq", "DFDSF", "17/05/199", "tunis-FdsfDSF", "DSfgds.fQSDF@esprit.tn", 455684, "FEMME");
@@ -63,6 +64,9 @@ public class main {
 //        System.out.println(adc.rechercherAdmin(8965));
            //adc.Login1("Mootaaz-hub","oqsjf");
             //adc.checkUsername("ygug");
+        ControleSaisie cs = new ControleSaisie();
+        String mail = "19/05/1665";
+        System.out.println(cs.convert(mail));
     }
     
 }

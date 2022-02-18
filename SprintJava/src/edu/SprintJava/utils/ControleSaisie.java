@@ -6,6 +6,11 @@
 package edu.SprintJava.utils;
 
 import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,4 +72,13 @@ public class ControleSaisie {
         Matcher controller = pattern.matcher(login);
         return controller.matches();
     }
+    /***************************************Test Mail FORMAT***********************************************************/
+    
+    public Date convert(String date) throws ParseException{
+            SimpleDateFormat sdf=new SimpleDateFormat("DD/MM/YYYY");
+            Date date1 =(Date) sdf.parse(date);
+            
+        return  date1;
+    }
+    
 }
