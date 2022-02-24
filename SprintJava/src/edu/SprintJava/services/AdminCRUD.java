@@ -29,8 +29,8 @@ public class AdminCRUD {
 
     public void ajouterAdmin(Admin a) {
         try {
-            String requete = "insert into admin(id,nom,prenom,cin,username,email,pass)"
-                    + "values(?,?,?,?,?,?,?)";
+            String requete = "insert into admin(nom,prenom,cin,username,email,pass)"
+                    + "values(?,?,?,?,?,?)";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.setInt(1, a.getId());
             pst.setString(2, a.getNom());
