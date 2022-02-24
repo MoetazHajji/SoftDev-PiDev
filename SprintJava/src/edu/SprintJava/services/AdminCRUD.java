@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,13 +33,12 @@ public class AdminCRUD {
             String requete = "insert into admin(nom,prenom,cin,username,email,pass)"
                     + "values(?,?,?,?,?,?)";
             PreparedStatement pst = mc.prepareStatement(requete);
-            pst.setInt(1, a.getId());
-            pst.setString(2, a.getNom());
-            pst.setString(3, a.getPrenom());
-            pst.setInt(4, a.getCin());
-            pst.setString(5, a.getUsername());
-            pst.setString(6, a.getEmail());
-            pst.setString(7, a.getPass());
+            pst.setString(1, a.getNom());
+            pst.setString(2, a.getPrenom());
+            pst.setInt(3, a.getCin());
+            pst.setString(4, a.getUsername());
+            pst.setString(5, a.getEmail());
+            pst.setString(6, a.getPass());
             pst.executeUpdate();
             System.err.println("Admin Ajoutée");
         } catch (SQLException ex) {
@@ -197,14 +197,11 @@ public class AdminCRUD {
             pst.setString(1, user);
             pst.setString(2, password);
             ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                checkUser = true;
-                Session.start();
-                System.out.println("User name existe");
+            if (rs.next()) {  
+                JOptionPane.showMessageDialog(null, "USERNAME AND PASSWORD MATCHED :)");
             } else {
                 checkUser = false;
-                Session.close();
-                System.out.println("user n'existe pas");
+                JOptionPane.showMessageDialog(null, "USERNAME OR PASSWORD DO NOT MATCH");
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);

@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/services/ClientCRUD.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/utils/ControleSaisie.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/services/AdminCRUD.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Client.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/services/LivreurCRUD.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/utils/MailUser.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/tests/main.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/LoginController.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/AjouterAdminController.java</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Admin.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Livreur.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Session.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/utils/MyConnection.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/Login.fxml</file>
         </group>
     </open-files>
 </project-private>

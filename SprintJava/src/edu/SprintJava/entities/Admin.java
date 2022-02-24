@@ -21,8 +21,8 @@ public class Admin {
     private String pass ;
     private String role;
 
-    public Admin(int id,String nom, String prenom,int cin, String username,String email,String pass) {
-        this.id=id;
+    public Admin(String nom, String prenom,int cin, String username,String email,String pass) {
+      
         this.nom = nom;
         this.prenom = prenom;
         this.cin=cin;
@@ -124,7 +124,7 @@ public class Admin {
     
     @Override
     public String toString() {
-        return "Admin{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", username "+ username +", email=" + email + ", pass=" + pass + " , role= "+role+ '}'+"\n";
+        return "Admin{" + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", username "+ username +", email=" + email + ", pass=" + pass + " , role= "+role+ '}'+"\n";
     }
 
     @Override

@@ -7,6 +7,7 @@ package edu.SprintJava.tests;
 
 import edu.SprintJava.entities.Admin;
 import edu.SprintJava.entities.Client;
+import edu.SprintJava.entities.CustomTimer;
 import edu.SprintJava.entities.Livreur;
 import edu.SprintJava.entities.Session;
 //import edu.SprintJava.entities.User;
@@ -16,6 +17,8 @@ import edu.SprintJava.services.LivreurCRUD;
 import edu.SprintJava.utils.ControleSaisie;
 //import edu.SprintJava.services.UserService;
 import edu.SprintJava.utils.MyConnection;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -64,9 +67,11 @@ public class main {
 //        System.out.println(adc.rechercherAdmin(8965));
            //adc.Login1("Mootaaz-hub","oqsjf");
             //adc.checkUsername("ygug");
-        ControleSaisie cs = new ControleSaisie();
-        String mail = "19/05/1665";
-        System.out.println(cs.convert(mail));
+//        ControleSaisie cs = new ControleSaisie();
+//        String mail = "19/05/1665";
+//        System.out.println(cs.convert(mail));
+          Timer chrono =new Timer();
+          chrono.schedule(new CustomTimer(), 1000, 1000);
     }
     
 }
