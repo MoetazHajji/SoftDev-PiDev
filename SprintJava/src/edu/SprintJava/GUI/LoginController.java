@@ -46,6 +46,7 @@ public class LoginController implements Initializable {
         try {
             AdminCRUD adc = new AdminCRUD();
             adc.Login1(TFUsername.getText(), TFPassword.getText());
+            loadHomeAdmin();
         } catch (Exception ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,6 +56,18 @@ public class LoginController implements Initializable {
     private void SignUp(ActionEvent event) {
         try {
             Parent root=FXMLLoader.load(getClass().getResource("AjouterAdmin.fxml"));
+            Scene scene=new Scene(root);
+            Stage stage=(Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    void loadHomeAdmin(){
+        try {
+            ActionEvent event = null;
+            Parent root=FXMLLoader.load(getClass().getResource("HomeAdminPannel.fxml"));
             Scene scene=new Scene(root);
             Stage stage=(Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

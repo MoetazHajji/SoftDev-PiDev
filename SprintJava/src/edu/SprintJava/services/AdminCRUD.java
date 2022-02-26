@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,21 +49,21 @@ public class AdminCRUD {
 
     }
 
-    public List<Admin> ListerAdmin() {
-        List<Admin> AdminList = new ArrayList<>();
+    public ObservableList<Admin> ListerAdmin() {
+        ObservableList<Admin> AdminList =FXCollections.observableArrayList();
         try {
             String requete = "Select * from Admin";
             Statement st = mc.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
                 Admin ad = new Admin();
-                ad.setId(rs.getInt(1));
                 ad.setNom(rs.getString("nom"));
                 ad.setPrenom(rs.getString("prenom"));
                 ad.setCin(rs.getInt(4));
                 ad.setUsername(rs.getString("username"));
                 ad.setEmail(rs.getString("email"));
                 ad.setPass(rs.getString("pass"));
+                ad.setRole(rs.getString("role"));
                 AdminList.add(ad);
             }
         } catch (SQLException ex) {
@@ -92,6 +94,16 @@ public class AdminCRUD {
             System.err.println("Admin deleted");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+        }
+    }
+    public void SupprimerAdmin(String nom_a){
+        String requete="DELETE FROM admin WHERE `id`='"+nom_a+"' ";
+        try {
+            Statement st=mc.createStatement();
+            st.executeUpdate(requete);
+            System.out.println("Admin deleted");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
