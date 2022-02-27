@@ -72,11 +72,11 @@ public class AdminCRUD {
         return AdminList;
     }
 
-    public void modifierAdmin(int id_a, String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a, String role_a) {
+    public void modifierAdmin( String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a, String role_a) {
         try {
             String requete = "UPDATE Admin SET"
-                    + " `id`='" + id_a + "' ,`nom`='" + nom_a + "' , `prenom`='" + prenom_a + "' , `cin`='" + cin_a + "' "
-                    + ",`username`='" + username_a + "',`email` ='" + email_a + "' ,`pass`='" + pass_a + "' , `role`='" + role_a + "'  where `id`='" + id_a + "' ";
+                    + " `nom`='" + nom_a + "' , `prenom`='" + prenom_a + "' , `cin`='" + cin_a + "' "
+                    + ",`username`='" + username_a + "',`email` ='" + email_a + "' ,`pass`='" + pass_a + "' , `role`='" + role_a + "'  where `nom`='" + nom_a + "' ";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");
@@ -97,7 +97,7 @@ public class AdminCRUD {
         }
     }
     public void SupprimerAdmin(String nom_a){
-        String requete="DELETE FROM admin WHERE `id`='"+nom_a+"' ";
+        String requete="DELETE FROM admin WHERE `nom`='"+nom_a+"' ";
         try {
             Statement st=mc.createStatement();
             st.executeUpdate(requete);

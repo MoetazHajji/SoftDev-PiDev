@@ -5,15 +5,18 @@
         <group>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/FXMain.java</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/services/AdminCRUD.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/LoginController.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/utils/Notification.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Client.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/FXMLLoginController.java</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/AjouterAdminController.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/HomeAdminPannel.fxml</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/HomeAdminPannelController.java</file>
-            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/AjouterAdmin.fxml</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Admin.java</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/Utility.java</file>
             <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/Login.fxml</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/services/ClientCRUD.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/LoginController.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/GUI/HomeAdminPannel.fxml</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/services/LivreurCRUD.java</file>
+            <file>file:/C:/Users/moete/OneDrive/Desktop/3eme/Semester%202/PiDev/SprintJava/src/edu/SprintJava/entities/Livreur.java</file>
         </group>
     </open-files>
 </project-private>

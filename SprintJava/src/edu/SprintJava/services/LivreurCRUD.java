@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -21,15 +23,14 @@ import java.util.List;
 public class LivreurCRUD {
     public void ajouterLivreur(Livreur a){
         try {
-            String requete = "insert into livreur(id,nom,prenom,email,username,password)"
-                    + "values(?,?,?,?,?,?)";
+            String requete = "insert into livreur(nom,prenom,email,username,password)"
+                    + "values(?,?,?,?,?)";
             PreparedStatement pst=MyConnection.getInstance().getCnx().prepareStatement(requete);
-            pst.setInt(1,a.getId());
-            pst.setString(2,a.getNom());
-            pst.setString(3,a.getPrenom());
-            pst.setString(4,a.getEmail());
-            pst.setString(5,a.getPrenom());
-            pst.setString(6,a.getPassword());
+            pst.setString(1,a.getNom());
+            pst.setString(2,a.getPrenom());
+            pst.setString(3,a.getEmail());
+            pst.setString(4,a.getPrenom());
+            pst.setString(5,a.getPassword());
             pst.executeUpdate();
             System.err.println("Livreur Ajoutée");
         } catch (SQLException ex) {
@@ -37,15 +38,14 @@ public class LivreurCRUD {
         }
     
     }
-    public List<Livreur> ListerLivreur(){
-         List<Livreur> LivreurList=new ArrayList<>();
+    public ObservableList<Livreur> ListerLivreur(){
+         ObservableList<Livreur> LivreurList=FXCollections.observableArrayList();
         try {
             String requete ="Select * from livreur";
             Statement st=MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);
             while(rs.next()){
                 Livreur li =new Livreur();
-                li.setId(rs.getInt(1));
                 li.setNom(rs.getString("nom"));
                 li.setPrenom(rs.getString("prenom"));
                 li.setEmail(rs.getString("email"));
@@ -59,10 +59,10 @@ public class LivreurCRUD {
         return LivreurList;
     }
     
-    public void modifierLivreur(int id_l,String nom_l,String prenom_l,String email_l,String username_l,String password_l){
+    public void modifierLivreur(String nom_l,String prenom_l,String email_l,String username_l,String password_l){
         try {
-            String requete="UPDATE livreur SET `id`='"+id_l+"' ,`nom`='"+nom_l+"' , `prenom`='"+prenom_l+"'  "
-                    + ", `prenom`='"+email_l+"' , `prenom`='"+username_l+"' , `prenom`='"+password_l+"'  where `id`='"+id_l+"' ";
+            String requete="UPDATE livreur SET `nom`='"+nom_l+"' , `prenom`='"+prenom_l+"'  "
+                    + ", `prenom`='"+email_l+"' , `prenom`='"+username_l+"' , `prenom`='"+password_l+"'  where `nom`='"+nom_l+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");

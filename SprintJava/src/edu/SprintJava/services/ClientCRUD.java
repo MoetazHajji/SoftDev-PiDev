@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -23,18 +25,18 @@ import java.util.logging.Logger;
 public class ClientCRUD {
     public void ajouterClient(Client cl){
         try {
-            String requete = "insert into client(id,nom,prenom,date_naissance,pays_ville,mobile,email,password,genre)"
+            String requete = "insert into client(nom,prenom,date_naissance,pays_ville,mobile,email,username,password,genre)"
                     + "values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst=MyConnection.getInstance().getCnx().prepareStatement(requete);
-            pst.setInt(1,cl.getId());
-            pst.setString(2,cl.getNom());
-            pst.setString(3,cl.getPrenom());
-            pst.setString(4,cl.getDate_naissance());
-            pst.setString(5,cl.getPays_ville());
-            pst.setInt(6,cl.getMobile());
-            pst.setString(7,cl.getEmail());
+            pst.setString(1,cl.getNom());
+            pst.setString(2,cl.getPrenom());
+            pst.setString(3,cl.getDate_naissance());
+            pst.setString(4,cl.getPays_ville());
+            pst.setInt(5,cl.getMobile());
+            pst.setString(6,cl.getEmail());
+            pst.setString(7,cl.getUsername());
             pst.setString(8,cl.getPassword());
-            pst.setString(8,cl.getGenre());
+            pst.setString(9,cl.getGenre());
             pst.executeUpdate();
             System.err.println("Client Ajoutée");
         } catch (SQLException ex) {
@@ -43,8 +45,8 @@ public class ClientCRUD {
     
     }
     
-    public List<Client> ListerClient(){
-         List<Client> ClientList=new ArrayList<>();
+    public ObservableList<Client> ListerClient(){
+         ObservableList<Client> ClientList =FXCollections.observableArrayList();
         try {
             String requete ="Select * from client";
             Statement st=MyConnection.getInstance().getCnx().createStatement();
@@ -67,11 +69,11 @@ public class ClientCRUD {
         } 
         return ClientList;
     }
-    public void modifierClient(int id_c,String nom_c,String prenom_c,String date_naissance_c,String pays_ville_c,int mobile_c,String email_c,String password_c,String genre_c){
+    public void modifierClient(String nom_c,String prenom_c,String date_naissance_c,String pays_ville_c,int mobile_c,String email_c,String password_c,String genre_c){
         try {
             String requete="UPDATE client SET"
-                    + " `id`='"+id_c+"' ,`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"',`pays_ville`='"+prenom_c+"'"
-                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `password`='"+password_c+"',`genre`='"+genre_c+"' where `id`='"+id_c+"' ";
+                    + "`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"',`pays_ville`='"+prenom_c+"'"
+                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `password`='"+password_c+"',`genre`='"+genre_c+"' where `nom`='"+nom_c+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");

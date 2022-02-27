@@ -17,10 +17,11 @@ public class Client {
     private String pays_ville;
     private int mobile;
     private String email;
+    private String username;
     private String password;
     private String genre;
 
-    public Client(int id, String nom, String prenom, String date_naissance, String pays_ville,int mobile, String email, String password, String genre) {
+    public Client(String nom, String prenom, String date_naissance, String pays_ville,int mobile, String email,String username, String password, String genre) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -28,6 +29,7 @@ public class Client {
         this.pays_ville = pays_ville;
         this.mobile = mobile;
         this.email = email;
+        this.username = username;
         this.password=password;
         this.genre = genre;
     }
@@ -57,6 +59,14 @@ public class Client {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public int getMobile() {
@@ -102,7 +112,7 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance + 
-                ", pays_ville=" + pays_ville + ", mobile=" + mobile + ", email=" + email + ", password=" + password + ", genre=" + genre +'}'+"\n";
+                ", pays_ville=" + pays_ville + ", mobile=" + mobile + ", email=" + email +", username=" + username + ", password=" + password + ", genre=" + genre +'}'+"\n";
     }
 
     public String getPassword() {

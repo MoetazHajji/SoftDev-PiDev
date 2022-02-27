@@ -28,7 +28,6 @@ public class FXMain extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root=FXMLLoader.load(getClass().getResource("HomeAdminPannel.fxml"));
-            
             Scene scene=new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("---Admin Login---");
