@@ -82,4 +82,28 @@ public class LivreurCRUD {
             System.err.println(ex.getMessage());
         }
     }
+     public ObservableList<Livreur> rechercherLivreurById(String esmElcolumn,String elibechtlawej3lih) {
+        ObservableList<Livreur> LivreurList = FXCollections.observableArrayList();
+        try {
+            String requete = "SELECT * FROM livreur WHERE "+esmElcolumn+" LIKE '%"+elibechtlawej3lih+"%'";
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                Livreur li = new Livreur();
+                
+                li.setId(rs.getInt(1));
+                li.setNom(rs.getString("nom"));
+                li.setPrenom(rs.getString("prenom"));
+                li.setEmail(rs.getString("email"));
+                li.setUsername(rs.getString("username"));
+                li.setPassword(rs.getString("password"));
+
+                LivreurList.add(li);
+
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return LivreurList;
+    }
 }

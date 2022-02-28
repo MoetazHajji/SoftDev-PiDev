@@ -92,6 +92,33 @@ public class ClientCRUD {
             System.err.println(ex.getMessage());
         }
     }
-    
+    public ObservableList<Client> rechercherClientById(String esmElcolumn,String elibechtlawej3lih) {
+        ObservableList<Client> ClientList = FXCollections.observableArrayList();
+        try {
+            String requete = "SELECT * FROM client WHERE "+esmElcolumn+" LIKE '%"+elibechtlawej3lih+"%'";
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                Client cl = new Client();
+                
+                cl.setId(rs.getInt(1));
+                cl.setNom(rs.getString("nom"));
+                cl.setPrenom(rs.getString("prenom"));
+                cl.setPrenom(rs.getString("date_naissance"));
+                cl.setPrenom(rs.getString("pays_ville"));
+                cl.setMobile(rs.getInt(6));
+                cl.setUsername(rs.getString("username"));
+                cl.setEmail(rs.getString("email"));
+                cl.setPassword(rs.getString("password"));
+                cl.setGenre(rs.getString("genre"));
+
+                ClientList.add(cl);
+
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return ClientList;
+    }
     
 }

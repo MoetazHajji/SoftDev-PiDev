@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
@@ -140,15 +141,15 @@ public class AdminCRUD {
         return mail;
     }
 
-    public List<Admin> rechercherAdmin(int id) {
-        List<Admin> AdminList = new ArrayList<>();
+    public ObservableList<Admin> rechercherAdminById(String esmElcolumn,String elibechtlawej3lih) {
+        ObservableList<Admin> AdminList = FXCollections.observableArrayList();
         try {
-            String requete = "SELECT * FROM Admin WHERE `id`='" + id + "' ";
+            String requete = "SELECT * FROM admin WHERE "+esmElcolumn+" LIKE '%"+elibechtlawej3lih+"%'";
             Statement st = mc.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
                 Admin ad = new Admin();
-
+                
                 ad.setId(rs.getInt(1));
                 ad.setNom(rs.getString("nom"));
                 ad.setPrenom(rs.getString("prenom"));
@@ -165,10 +166,17 @@ public class AdminCRUD {
         }
         return AdminList;
     }
+    public List<Admin> rechercherAdmin(int id)
+         {
+             List<Admin> AdminList = new ArrayList<>();
+             //AdminList=rechercherAdminById();
+         return AdminList.stream().filter(t ->t.getId()== id).collect(Collectors.toList());
+         }
+     
 
-    public void affecterAdminRolle(int id_ad, String role_a) {
+    public void affecterAdminRolle(String role_a) {
         try {
-            String requete = "update Admin SET `role`='" + role_a + "'WHERE `id`='" + id_ad + "'  ";
+            String requete = "update Admin SET `role`='" + role_a + "'  ";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.executeUpdate();
             System.out.println("Admin Affecté !!");

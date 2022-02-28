@@ -144,6 +144,12 @@ public class HomeAdminPannelController implements Initializable {
     private TextField TFUpdAdRole;
     @FXML
     private Pane pnlModifyAdmin;
+    @FXML
+    private TextField TFRechercheAd;
+    @FXML
+    private TextField TFRechercheLiv;
+    @FXML
+    private TextField TFRechercherCli;
 
     /*
      * Initializes the controller class.
@@ -167,6 +173,7 @@ public class HomeAdminPannelController implements Initializable {
         listeLivreur=lic.ListerLivreur();
         remplirTableLivreur(listeLivreur);
 //        LoadDataLivreur();
+//        LoadDataAdmin();
     }
 
     @FXML
@@ -199,10 +206,7 @@ public class HomeAdminPannelController implements Initializable {
         pnlLivreur.toFront();
     }
     
-    @FXML
-    private void AfficherAdminModify(ActionEvent event) {
-        pnlModifyAdmin.toFront();
-    }
+    
     
     private void remplirTableAdmin(ObservableList<Admin> liste ){
      TCNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -279,84 +283,76 @@ public class HomeAdminPannelController implements Initializable {
         li.setPassword(TFPasswordLivreur.getText());
         lic.ajouterLivreur(li);
     }
+    @FXML
+    private void AfficherAdminModify(ActionEvent event) {
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Modification Admin");
+        alert.setHeaderText("Modifier"+TVListeAdmin.getSelectionModel().getSelectedItem().getId());
+        alert.setContentText("Vous voulez vraiment modifier l'admin " +TVListeAdmin.getSelectionModel().getSelectedItem().getNom() + " ?");
+        Optional<ButtonType> result =alert.showAndWait();
+        if(result.get()==ButtonType.OK){
+            pnlModifyAdmin.toFront();
+        }
+        if(result.get()==ButtonType.CANCEL){
+            alert.close();
+        }
+    }
+        
+    
 
     @FXML
-    private void LoadDataLivreur()  {
+    private void ModifierAdmin(ActionEvent event) throws AWTException {
+            AdminCRUD adc=new AdminCRUD();
+            adc.modifierAdmin(TFUpdAdNom.getText(), TFUpdAdPrenom.getText(), Integer.parseInt(TFUpdAdCIN.getText()), TFUpdAdUsername.getText()
+                , TFUpdAdEmail.getText(), TFUpdAdPassword.getText(), TFUpdAdRole.getText());
+            Notification.main("Admin !", "Admin modifié avec succé !!");  
+            
+    }
+
+    @FXML
+    private void RechercherAdmin(ActionEvent event) {
+        AdminCRUD adc = new AdminCRUD();
+         ObservableList<Admin> list = FXCollections.observableArrayList();
+         list=adc.rechercherAdminById("nom", TFRechercheAd.getText());
+         TCNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+         TCPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+         TCCIN.setCellValueFactory(new PropertyValueFactory<>("cin"));
+         TCEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+         TCUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+         TCPassword.setCellValueFactory(new PropertyValueFactory<>("pass"));
+         TCRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+         TVListeAdmin.setItems(list);
+    }
+
+    @FXML
+    private void RechercherLivreur(ActionEvent event) {
         LivreurCRUD lic = new LivreurCRUD();
-        TVLivreur.setItems(lic.ListerLivreur());
-        TCNomLivreur.setCellFactory(new PropertyValueFactory<>("nom"));
-        TCPrenomLivreur.setCellFactory(new PropertyValueFactory<>("prenom"));
-        TCEmailLivreur.setCellFactory(new PropertyValueFactory<>("email"));
-        TCUsernameLivreur.setCellFactory(new PropertyValueFactory<>("username"));
-        TCPasswordLivreur.setCellFactory(new PropertyValueFactory<>("password"));
-        
-            TVLivreur.getSelectionModel().getSelectedItem();
-            TCNomLivreur.setCellFactory(TextFieldTableCell.forTableColumn());
-            TCNomLivreur.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setNom(e.getNewValue());
-            });
-            
-            TCPrenomLivreur.setCellFactory(TextFieldTableCell.forTableColumn());
-            TCPrenomLivreur.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setPrenom(e.getNewValue());
-            });
-            
-            TCEmailLivreur.setCellFactory(TextFieldTableCell.forTableColumn());
-            TCEmailLivreur.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setEmail(e.getNewValue());
-            });
-            
-            TCUsernameLivreur.setCellFactory(TextFieldTableCell.forTableColumn());
-            TCUsernameLivreur.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setUsername(e.getNewValue());
-            });
-            
-            TCPasswordLivreur.setCellFactory(TextFieldTableCell.forTableColumn());
-            TCPasswordLivreur.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setPassword(e.getNewValue());
-            });
-            
-       TVLivreur.setEditable(true);
+         ObservableList<Livreur> list = FXCollections.observableArrayList();
+         list=lic.rechercherLivreurById("nom", TFRechercheLiv.getText());
+         TCNomLivreur.setCellValueFactory(new PropertyValueFactory<>("nom"));
+         TCPrenomLivreur.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+         TCEmailLivreur.setCellValueFactory(new PropertyValueFactory<>("email"));
+         TCUsernameLivreur.setCellValueFactory(new PropertyValueFactory<>("username"));
+         TCPasswordLivreur.setCellValueFactory(new PropertyValueFactory<>("password"));
+         TVLivreur.setItems(list);
     }
-
-//    @FXML
-//    private void LoadDataClient(SortEvent<C> event) {
-//        
-//    }
 
     @FXML
-    private void ModifierAdmin() {
-        TableColumn<Admin , Void> colBtn =new TableColumn("Edit");
-        
-        Callback<TableColumn<Admin , Void>,TableCell<Admin , Void>> cellFactory=(final TableColumn<Admin , Void> param)->{
-            final TableCell<Admin , Void> cell=new TableCell<Admin , Void>(){
-                private final Button btn =new Button("Update");
-                {
-                    btn.setOnAction((ActionEvent event)-> {
-                        Admin data = getTableView().getItems().get(getIndex());
-                        AdminCRUD adc= new AdminCRUD();
-                        adc.modifierAdmin(data.getNom(), data.getPrenom(), data.getCin(), data.getUsername(), data.getEmail(), data.getPass(), data.getRole());
-                            System.out.println("Selected Data : "+data);
-                    });
-                }
-                
-                @Override
-                public void updateItem(Void item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                    } else {
-                        setGraphic(btn);
-                    }
-                }
-            };
-            return cell;
-        };
-        colBtn.setCellFactory(cellFactory);
-        
-        TVListeAdmin.getColumns().add(colBtn);
+    private void RechercherClient(ActionEvent event) {
+        ClientCRUD clc = new ClientCRUD();
+         ObservableList<Client> list = FXCollections.observableArrayList();
+         list=clc.rechercherClientById("nom", TFRechercheLiv.getText());
+         TCNomLivreur.setCellValueFactory(new PropertyValueFactory<>("nom"));
+         TCPrenomClient.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+         TCDateNaissance.setCellValueFactory(new PropertyValueFactory<>("date_naissance"));
+         TCPaysVille.setCellValueFactory(new PropertyValueFactory<>("pays_ville"));
+         TCMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+         TCEmailClient.setCellValueFactory(new PropertyValueFactory<>("email"));
+         TCUsernameClient.setCellValueFactory(new PropertyValueFactory<>("username"));
+         TCPasswordClient.setCellValueFactory(new PropertyValueFactory<>("password"));
+         TCGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+         TVClient.setItems(list);
     }
-
    
 
     

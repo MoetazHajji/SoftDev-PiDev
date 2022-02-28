@@ -114,11 +114,63 @@
                         <Font size="44.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAddUser" layoutX="817.0" layoutY="224.0" mnemonicParsing="false" onAction="#AjouterUser" prefHeight="29.0" prefWidth="184.0" scaleShape="false" text="Add Admin" />
-                  <TextField layoutX="620.0" layoutY="224.0" prefHeight="29.0" prefWidth="171.0" promptText="Rechercher" />
-                  <Button layoutX="121.0" layoutY="649.0" mnemonicParsing="false" onAction="#SupprimerAdmin" prefHeight="29.0" prefWidth="119.0" text="Delete Selected" />
-                  <Button layoutX="121.0" layoutY="602.0" mnemonicParsing="false" onAction="#AfficherAdminModify" prefHeight="29.0" prefWidth="119.0" text="Modify Admin" />
-               </children></Pane>
+                  <Button fx:id="btnAddUser" layoutX="97.0" layoutY="552.0" mnemonicParsing="false" onAction="#AjouterUser" prefHeight="29.0" prefWidth="143.0" scaleShape="false" text="Add Admin" />
+                  <TextField fx:id="TFRechercheAd" layoutX="649.0" layoutY="224.0" prefHeight="29.0" prefWidth="211.0" promptText="Rechercher" />
+                  <Button layoutX="97.0" layoutY="649.0" mnemonicParsing="false" onAction="#SupprimerAdmin" prefHeight="29.0" prefWidth="143.0" text="Delete Selected" />
+                  <Button layoutX="97.0" layoutY="602.0" mnemonicParsing="false" onAction="#AfficherAdminModify" prefHeight="29.0" prefWidth="143.0" text="Modify Admin" />
+                  <Button layoutX="879.0" layoutY="224.0" mnemonicParsing="false" onAction="#RechercherAdmin" prefHeight="27.0" prefWidth="122.0" text="Rechercer" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlLivreur" layoutY="-8.0" prefHeight="723.0" prefWidth="1015.0" style="-fx-background-color: yellow;">
+               <children>
+                  <TableView fx:id="TVLivreur" layoutX="435.0" layoutY="357.0" prefHeight="326.0" prefWidth="550.0">
+                    <columns>
+                      <TableColumn fx:id="TCNomLivreur" prefWidth="75.0" text="Nom" />
+                      <TableColumn fx:id="TCPrenomLivreur" prefWidth="75.0" text="Prenom" />
+                        <TableColumn fx:id="TCEmailLivreur" prefWidth="178.0" text="Email" />
+                        <TableColumn fx:id="TCUsernameLivreur" prefWidth="101.0" text="Username" />
+                        <TableColumn fx:id="TCPasswordLivreur" prefWidth="120.0" text="Password" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="TFNomLivreur" layoutX="158.0" layoutY="108.0" prefHeight="25.0" prefWidth="171.0" promptText="Name" />
+                  <TextField fx:id="TFPrenomLivreur" layoutX="158.0" layoutY="141.0" prefHeight="25.0" prefWidth="171.0" promptText="Second Name" />
+                  <TextField fx:id="TFEmailLivreur" layoutX="158.0" layoutY="174.0" prefHeight="25.0" prefWidth="171.0" promptText="Email" />
+                  <TextField fx:id="TFUsernameLivreur" layoutX="158.0" layoutY="208.0" prefHeight="25.0" prefWidth="171.0" promptText="Username" />
+                  <Label layoutX="51.0" layoutY="47.0" prefHeight="43.0" prefWidth="184.0" text="Basic details">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="112.0" prefHeight="17.0" prefWidth="61.0" text="Nom" />
+                  <Label layoutX="56.0" layoutY="145.0" prefHeight="17.0" prefWidth="61.0" text="Prénom" />
+                  <Label layoutX="56.0" layoutY="178.0" prefHeight="17.0" prefWidth="61.0" text="Email" />
+                  <Label layoutX="56.0" layoutY="212.0" prefHeight="17.0" prefWidth="61.0" text="Username" />
+                  <Label layoutX="56.0" layoutY="245.0" prefHeight="17.0" prefWidth="61.0" text="Password" />
+                  <Button layoutX="435.0" layoutY="108.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="25.0" prefWidth="110.0" text="Ajouter Livreur" />
+                  <MenuButton layoutX="84.0" layoutY="416.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                  <Label layoutX="86.0" layoutY="373.0" text="Lister les commandes">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="435.0" layoutY="166.0" mnemonicParsing="false" text="Supprimer Livreur" />
+                  <Button layoutX="435.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Modifier Livreur" />
+                  <TextField fx:id="TFRechercheLiv" layoutX="638.0" layoutY="317.0" prefHeight="25.0" prefWidth="184.0" promptText="Rechercher" />
+                  <PasswordField fx:id="TFPasswordLivreur" layoutX="158.0" layoutY="241.0" prefHeight="25.0" prefWidth="171.0" promptText="Password" />
+                  <Button layoutX="854.0" layoutY="317.0" mnemonicParsing="false" onAction="#RechercherLivreur" prefHeight="25.0" prefWidth="122.0" text="Rechercher" />
+                  <Line endX="100.0" layoutX="143.0" layoutY="89.0" startX="-100.0" />
+                  <Label layoutX="387.0" layoutY="4.0" prefHeight="51.0" prefWidth="282.0" text="Livreur Pannel :">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             <Pane fx:id="pnlClient" layoutY="-8.0" prefHeight="714.0" prefWidth="1015.0" style="-fx-background-color: black;">
                <children>
                   <TableView fx:id="TVClient" layoutX="288.0" layoutY="345.0" prefHeight="333.0" prefWidth="700.0">
@@ -134,50 +186,9 @@
                         <TableColumn fx:id="TCGenre" prefWidth="52.0" text="Genre" />
                     </columns>
                   </TableView>
+                  <TextField fx:id="TFRechercherCli" layoutX="679.0" layoutY="303.0" prefHeight="25.0" prefWidth="177.0" promptText="Rechercher" />
+                  <Button layoutX="874.0" layoutY="303.0" mnemonicParsing="false" onAction="#RechercherClient" prefHeight="25.0" prefWidth="110.0" text="Rechercher" />
                </children></Pane>
-            <Pane fx:id="pnlLivreur" layoutY="-8.0" prefHeight="723.0" prefWidth="1015.0" style="-fx-background-color: yellow;">
-               <children>
-                  <TableView fx:id="TVLivreur" layoutX="435.0" layoutY="357.0" prefHeight="326.0" prefWidth="550.0">
-                    <columns>
-                      <TableColumn fx:id="TCNomLivreur" prefWidth="75.0" text="Nom" />
-                      <TableColumn fx:id="TCPrenomLivreur" prefWidth="75.0" text="Prenom" />
-                        <TableColumn fx:id="TCEmailLivreur" prefWidth="178.0" text="Email" />
-                        <TableColumn fx:id="TCUsernameLivreur" prefWidth="101.0" text="Username" />
-                        <TableColumn fx:id="TCPasswordLivreur" prefWidth="120.0" text="Password" />
-                    </columns>
-                  </TableView>
-                  <TextField fx:id="TFNomLivreur" layoutX="158.0" layoutY="76.0" prefHeight="25.0" prefWidth="171.0" promptText="Name" />
-                  <TextField fx:id="TFPrenomLivreur" layoutX="158.0" layoutY="108.0" prefHeight="25.0" prefWidth="171.0" promptText="Second Name" />
-                  <TextField fx:id="TFEmailLivreur" layoutX="158.0" layoutY="141.0" prefHeight="25.0" prefWidth="171.0" promptText="Email" />
-                  <TextField fx:id="TFUsernameLivreur" layoutX="158.0" layoutY="173.0" prefHeight="25.0" prefWidth="171.0" promptText="Username" />
-                  <Label layoutX="73.0" layoutY="14.0" prefHeight="43.0" prefWidth="184.0" text="Basic details">
-                     <font>
-                        <Font size="29.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="59.0" layoutY="80.0" text="Nom" />
-                  <Label layoutX="59.0" layoutY="112.0" text="Prénom" />
-                  <Label layoutX="59.0" layoutY="145.0" text="Email" />
-                  <Label layoutX="59.0" layoutY="177.0" text="Username" />
-                  <Label layoutX="59.0" layoutY="211.0" prefHeight="17.0" prefWidth="61.0" text="Password" />
-                  <Button layoutX="435.0" layoutY="76.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="25.0" prefWidth="110.0" text="Ajouter Livreur" />
-                  <MenuButton layoutX="84.0" layoutY="416.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-                  <Label layoutX="86.0" layoutY="373.0" text="Lister les commandes">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="435.0" layoutY="141.0" mnemonicParsing="false" text="Supprimer Livreur" />
-                  <Button layoutX="435.0" layoutY="207.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Modifier Livreur" />
-                  <TextField layoutX="797.0" layoutY="320.0" prefHeight="25.0" prefWidth="184.0" promptText="Rechercher" />
-                  <PasswordField fx:id="TFPasswordLivreur" layoutX="158.0" layoutY="207.0" prefHeight="25.0" prefWidth="171.0" promptText="Password" />
-               </children>
-            </Pane>
          </children>
       </AnchorPane>
    </children>
