@@ -81,13 +81,12 @@ public class ClientCRUD {
             System.out.println(ex.getMessage());
         }
     }
-    public void supprimerClient(Client cl){
+    public void supprimerClient(String nom_cl){
+        String requete="DELETE from client where `nom`='"+nom_cl+"'";
         try {
-            String requete="DELETE from client where id=?";
-            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
-            pst.setInt(1, cl.getId());
-            pst.executeUpdate();
-            System.err.println("Client deleted");
+            Statement st=MyConnection.getInstance().getCnx().createStatement();
+            st.executeUpdate(requete);
+            System.out.println("Client deleted");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -107,7 +106,7 @@ public class ClientCRUD {
                 cl.setPrenom(rs.getString("date_naissance"));
                 cl.setPrenom(rs.getString("pays_ville"));
                 cl.setMobile(rs.getInt(6));
-                cl.setUsername(rs.getString("username"));
+                cl.setUsername(rs.getString("usercvname"));
                 cl.setEmail(rs.getString("email"));
                 cl.setPassword(rs.getString("password"));
                 cl.setGenre(rs.getString("genre"));

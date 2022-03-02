@@ -51,7 +51,7 @@ public class AdminCRUD {
     }
 
     public ObservableList<Admin> ListerAdmin() {
-        ObservableList<Admin> AdminList =FXCollections.observableArrayList();
+        ObservableList<Admin> AdminList = FXCollections.observableArrayList();
         try {
             String requete = "Select * from Admin";
             Statement st = mc.createStatement();
@@ -73,7 +73,7 @@ public class AdminCRUD {
         return AdminList;
     }
 
-    public void modifierAdmin( String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a, String role_a) {
+    public void modifierAdmin(String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a, String role_a) {
         try {
             String requete = "UPDATE Admin SET"
                     + " `nom`='" + nom_a + "' , `prenom`='" + prenom_a + "' , `cin`='" + cin_a + "' "
@@ -97,10 +97,11 @@ public class AdminCRUD {
             System.err.println(ex.getMessage());
         }
     }
-    public void SupprimerAdmin(String nom_a){
-        String requete="DELETE FROM admin WHERE `nom`='"+nom_a+"' ";
+
+    public void SupprimerAdmin(String nom_a) {
+        String requete = "DELETE FROM admin WHERE `nom`='" + nom_a + "' ";
         try {
-            Statement st=mc.createStatement();
+            Statement st = mc.createStatement();
             st.executeUpdate(requete);
             System.out.println("Admin deleted");
         } catch (SQLException ex) {
@@ -110,13 +111,13 @@ public class AdminCRUD {
 
     public Admin getAdmin(int id) {
         try {
-            String requete = "SELECT * FROM `admin` WHERE(id=" + id + ")";
+            String requete = "SELECT * FROM `admin` WHERE(id=" + String.valueOf(id) + ")";
             AdminCRUD adc = new AdminCRUD();
             PreparedStatement ps = mc.prepareStatement(requete);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Admin ad = new Admin(rs.getString("email"), rs.getString("pass"));
+                Admin ad = new Admin(rs.getString("username"), rs.getString("pass"));
                 return ad;
             }
 
@@ -141,15 +142,15 @@ public class AdminCRUD {
         return mail;
     }
 
-    public ObservableList<Admin> rechercherAdminById(String esmElcolumn,String elibechtlawej3lih) {
+    public ObservableList<Admin> rechercherAdminById(String esmElcolumn, String elibechtlawej3lih) {
         ObservableList<Admin> AdminList = FXCollections.observableArrayList();
         try {
-            String requete = "SELECT * FROM admin WHERE "+esmElcolumn+" LIKE '%"+elibechtlawej3lih+"%'";
+            String requete = "SELECT * FROM admin WHERE " + esmElcolumn + " LIKE '%" + elibechtlawej3lih + "%'";
             Statement st = mc.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
                 Admin ad = new Admin();
-                
+
                 ad.setId(rs.getInt(1));
                 ad.setNom(rs.getString("nom"));
                 ad.setPrenom(rs.getString("prenom"));
@@ -166,13 +167,12 @@ public class AdminCRUD {
         }
         return AdminList;
     }
-    public List<Admin> rechercherAdmin(int id)
-         {
-             List<Admin> AdminList = new ArrayList<>();
-             //AdminList=rechercherAdminById();
-         return AdminList.stream().filter(t ->t.getId()== id).collect(Collectors.toList());
-         }
-     
+
+    public List<Admin> rechercherAdmin(int id) {
+        List<Admin> AdminList = new ArrayList<>();
+        //AdminList=rechercherAdminById();
+        return AdminList.stream().filter(t -> t.getId() == id).collect(Collectors.toList());
+    }
 
     public void affecterAdminRolle(String role_a) {
         try {
@@ -185,29 +185,28 @@ public class AdminCRUD {
         }
     }
 
-    public Admin Login(String user, String password) {
-        Admin ad = new Admin();
-        try {
-            String requete = "SELECT username , pass  FROM admin "
-                    + "where username=? AND `pass`=? ";
-            PreparedStatement st = mc.prepareStatement(requete);
-            ResultSet rs = st.executeQuery();
-            if (user.equals(rs.getString("username")) && password.equals(rs.getString("pass"))) {
-
-                System.out.println("LOGIN accepté :)");
-                Session.start();
-
-            } else {
-                System.out.println("LOGIN refusé :( \n"
-                        + "Vérifier vos données");
-            }
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return ad;
-    }
-
+//    public Admin Login(String user, String password) throws Exception {
+//        Admin ad = new Admin();
+//        try {
+//            String requete = "SELECT username , pass  FROM admin "
+//                    + "where username=? AND `pass`=? ";
+//            PreparedStatement st = mc.prepareStatement(requete);
+//            ResultSet rs = st.executeQuery();
+//            if (user.equals(rs.getString("username")) && password.equals(rs.getString("pass"))) {
+//
+//                System.out.println("LOGIN accepté :)");
+//                Session.start();
+//
+//            } else {
+//                System.out.println("LOGIN refusé :( \n"
+//                        + "Vérifier vos données");
+//            }
+//
+//        } catch (SQLException ex) {
+//            System.err.println(ex.getMessage());
+//        }
+//        return ad;
+//    }
     public boolean Login1(String user, String password) throws Exception {
         boolean checkUser = false;
         Admin ad = new Admin();
@@ -217,7 +216,7 @@ public class AdminCRUD {
             pst.setString(1, user);
             pst.setString(2, password);
             ResultSet rs = pst.executeQuery();
-            if (rs.next()) {  
+            if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "USERNAME AND PASSWORD MATCHED :)");
             } else {
                 checkUser = false;
@@ -230,5 +229,25 @@ public class AdminCRUD {
         return checkUser;
     }
 
-    
+    public int checkParent(String Username,String Password) {
+        String requete = "SELECT count(*) FROM `Admin` WHERE `Username` = '" + Username + "' AND `pass`='"+Password+"' ";
+        PreparedStatement pst;
+        int check = 0;
+        try {
+
+            ResultSet rs;
+            pst = mc.prepareStatement(requete);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                check = rs.getInt(1);
+            }
+
+            return check;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return check;
+    }
+
 }

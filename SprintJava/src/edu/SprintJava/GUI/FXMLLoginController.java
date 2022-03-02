@@ -39,7 +39,7 @@ public class FXMLLoginController implements Initializable {
     void Login(ActionEvent event) {
         try {
             AdminCRUD adc=new AdminCRUD();
-            adc.Login(TFUsername.getText(), TFPassword.getText());
+            adc.Login1(TFUsername.getText(), TFPassword.getText());
         } catch (Exception ex) {
             Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
         }

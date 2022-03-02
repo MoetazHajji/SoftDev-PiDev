@@ -8,12 +8,16 @@ package edu.SprintJava.GUI;
 import edu.SprintJava.entities.Admin;
 import edu.SprintJava.entities.Client;
 import edu.SprintJava.entities.Livreur;
+import edu.SprintJava.entities.Session;
 import edu.SprintJava.services.AdminCRUD;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.LivreurCRUD;
 import edu.SprintJava.utils.Notification;
 import java.awt.AWTException;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -44,6 +48,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -53,6 +60,10 @@ import javafx.util.Callback;
  * @author moete
  */
 public class HomeAdminPannelController implements Initializable {
+    private static final String LINKED_IN = "https://www.linkedin.com/in/muhammedafsalvillan/";
+    private static final String FACEBOOK = "http://www.facebook.com/afsalashyana";
+    private static final String WEBSITE = "http://www.genuinecoder.com";
+    private static final String YOUTUBE = "https://www.youtube.com/c/GenuineCoder";
 
     @FXML
     private Button btnAddUser;
@@ -150,6 +161,8 @@ public class HomeAdminPannelController implements Initializable {
     private TextField TFRechercheLiv;
     @FXML
     private TextField TFRechercherCli;
+    @FXML
+    private Pane pnlClient1;
 
     /*
      * Initializes the controller class.
@@ -175,7 +188,48 @@ public class HomeAdminPannelController implements Initializable {
 //        LoadDataLivreur();
 //        LoadDataAdmin();
     }
+    private void loadWebpage(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException | URISyntaxException e1) {
+            e1.printStackTrace();
+            handleWebpageLoadException(url);
+        }
+    }
 
+    private void handleWebpageLoadException(String url) {
+        WebView browser = new WebView();
+        WebEngine webEngine = browser.getEngine();
+        webEngine.load(url);
+        Stage stage = new Stage();
+        Scene scene = new Scene(new StackPane(browser));
+        stage.setScene(scene);
+        stage.setTitle("Genuine Coder");
+        stage.show();
+//        LibraryAssistantUtil.setStageIcon(stage);
+    }
+    @FXML
+    private void loadLinkedIN(ActionEvent event) {
+        loadWebpage(LINKED_IN);
+    }
+
+    @FXML
+    private void loadFacebook(ActionEvent event) {
+        loadWebpage(FACEBOOK);
+    }
+
+    @FXML
+    private void loadBlog(ActionEvent event) {
+        
+        loadWebpage(WEBSITE);
+    }
+
+    @FXML
+    private void loadYoutubeChannel(ActionEvent event) {
+        loadWebpage(YOUTUBE);
+    }
+    
+    
     @FXML
     private void AjouterUser(ActionEvent event) {
         try {
@@ -260,10 +314,12 @@ public class HomeAdminPannelController implements Initializable {
             alert.close();
         }
     }
-
+    
     @FXML
-    private void Logout(ActionEvent event) {
+    private void Logout(ActionEvent event) throws Exception {
         try {
+            System.out.println("Se deconnecter");
+            Session.close();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
             Parent root=loader.load();
             TitreAdmin.getScene().setRoot(root);
@@ -341,8 +397,8 @@ public class HomeAdminPannelController implements Initializable {
     private void RechercherClient(ActionEvent event) {
         ClientCRUD clc = new ClientCRUD();
          ObservableList<Client> list = FXCollections.observableArrayList();
-         list=clc.rechercherClientById("nom", TFRechercheLiv.getText());
-         TCNomLivreur.setCellValueFactory(new PropertyValueFactory<>("nom"));
+         list=clc.rechercherClientById("nom", TFRechercherCli.getText());
+         TCNomClient.setCellValueFactory(new PropertyValueFactory<>("nom"));
          TCPrenomClient.setCellValueFactory(new PropertyValueFactory<>("prenom"));
          TCDateNaissance.setCellValueFactory(new PropertyValueFactory<>("date_naissance"));
          TCPaysVille.setCellValueFactory(new PropertyValueFactory<>("pays_ville"));
@@ -353,12 +409,31 @@ public class HomeAdminPannelController implements Initializable {
          TCGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
          TVClient.setItems(list);
     }
+
+    @FXML
+    private void SupprimerClient(ActionEvent event) throws AWTException {
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Suppression Admin");
+        alert.setHeaderText("Supprimer"+TVClient.getSelectionModel().getSelectedItem().getId());
+        alert.setContentText("Vous voulez vraiment supprimer l'admin " +TVClient.getSelectionModel().getSelectedItem().getNom() + " ?");
+        Optional<ButtonType> result =alert.showAndWait();
+        if(result.get()==ButtonType.OK){
+            ClientCRUD clc=new ClientCRUD();
+            Client cl=new Client();
+            cl=TVClient.getSelectionModel().getSelectedItem();
+            clc.supprimerClient(cl.getNom());
+                Notification.main("Admin !", "Admin supprimé avec succé !!");       
+                ObservableList<Client> liste=FXCollections.observableArrayList();
+                liste=clc.ListerClient();
+                remplirTableClient(liste);
+        }
+        if(result.get()==ButtonType.CANCEL){
+            alert.close();
+        }
+    }
+
+    
    
 
     
-
-    
-
-    
-
 }

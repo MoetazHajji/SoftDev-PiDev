@@ -40,11 +40,11 @@ public class main {
         //System.out.println(adc.ListerAdmin());
         //adc.modifierAdmin(8965, "oihjlk", "vdfsg",5343, "email", "jhjhuiigu","ezaqsd","kjg");
         //adc.supprimerAdmin(ad);
-        Client c=new Client("ahmed", "fazeni", "17/05/199", "tunis-ariana", 98563214, "ahmed.fazeni@esprit.tn", "homme");
-        Client c1=new Client(3513, "dsfgq", "DFDSF", "17/05/199", "tunis-FdsfDSF", "DSfgds.fQSDF@esprit.tn", 455684, "FEMME");
-        Client c2=new Client(435864, "FDSqfQ", "FDSfdsF", "17/05/199", "tdsfsFdsf", "DsfsdF.dsFSDFFFFFFFFFD@esprit.tn", 98563214, "PERSONALISE");
+        Client c=new Client("ahmed", "fazeni", "17/05/199", "tunis-ariana", 98563214, "ahmed.fazeni@esprit.tn","ahmed hamouda","haouda", "homme");
+        Client c1=new Client("khalil", "barkati", "17/05/2002", "tunis-sidiThebat", 98563214, "khalil.barkati@esprit.tn","khalil khoukhou","khalilllos", "homme");
+        
         ClientCRUD clc=new ClientCRUD();
-        //clc.ajouterAdmin(c2);
+        clc.ajouterClient(c1);
         //System.out.println(clc.ListerClient());
         //clc.modifierClient(435864, "khdjsf", "klqshf", "19/2/946563", "lfhjdnsqf", "qsffqs@fqsfq.com", 56464, "dfsfq");
         //clc.supprimerClient(c2);
