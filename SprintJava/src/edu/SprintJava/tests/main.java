@@ -27,12 +27,12 @@ import java.util.TimerTask;
 public class main {
 
     public static void main(String[] args) throws Exception {
-        MyConnection mc = new MyConnection();
+        //MyConnection mc = new MyConnection();
 //        Admin ad = new Admin(1912261, "Moetaz", "Hajji", 65745,"Mootaaz-hub", "Moetaz.hajji@esprit.tn", "oqsjf");
 //        Admin ad1 = new Admin(8965, "hamdi", "l3ou9", 44654968, "hamdi@esprit.tn", "sqddqfq","admin produits");
 //        Admin ad2 = new Admin(74123698, "loulou", "bounifa", 1456564, "loulou@esprit.tn", "fqsfggqe","admin xxxx");
 //        
-//        AdminCRUD adc = new AdminCRUD();
+        AdminCRUD adc = new AdminCRUD();
 //        Admin ad3 = new Admin(138, "moumouet", "ben khalifet", 35168, "Mootaaz-hub", "mimouet@esprit.tn","admin xxxx");
         // adc.ajouterAdmin(ad);
         // adc.ajouterAdmin(ad1);
@@ -40,11 +40,11 @@ public class main {
         //System.out.println(adc.ListerAdmin());
         //adc.modifierAdmin(8965, "oihjlk", "vdfsg",5343, "email", "jhjhuiigu","ezaqsd","kjg");
         //adc.supprimerAdmin(ad);
-        Client c=new Client("ahmed", "fazeni", "17/05/199", "tunis-ariana", 98563214, "ahmed.fazeni@esprit.tn","ahmed hamouda","haouda", "homme");
-        Client c1=new Client("khalil", "barkati", "17/05/2002", "tunis-sidiThebat", 98563214, "khalil.barkati@esprit.tn","khalil khoukhou","khalilllos", "homme");
-        
-        ClientCRUD clc=new ClientCRUD();
-        clc.ajouterClient(c1);
+//        Client c=new Client("ahmed", "fazeni", "17/05/199", "tunis-ariana", 98563214, "ahmed.fazeni@esprit.tn","ahmed hamouda","haouda", "homme");
+//        Client c1=new Client("khalil", "barkati", "17/05/2002", "tunis-sidiThebat", 98563214, "khalil.barkati@esprit.tn","khalil khoukhou","khalilllos", "homme");
+//        
+//        ClientCRUD clc=new ClientCRUD();
+//        clc.ajouterClient(c1);
         //System.out.println(clc.ListerClient());
         //clc.modifierClient(435864, "khdjsf", "klqshf", "19/2/946563", "lfhjdnsqf", "qsffqs@fqsfq.com", 56464, "dfsfq");
         //clc.supprimerClient(c2);
@@ -70,8 +70,9 @@ public class main {
 //        ControleSaisie cs = new ControleSaisie();
 //        String mail = "19/05/1665";
 //        System.out.println(cs.convert(mail));
-          Timer chrono =new Timer();
-          chrono.schedule(new CustomTimer(), 1000, 1000);
+//          Timer chrono =new Timer();
+//          chrono.schedule(new CustomTimer(), 1000, 1000);
+        adc.affecterAdminRolle("soulaymen", "Master");
     }
     
 }

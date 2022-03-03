@@ -109,37 +109,38 @@ public class AdminCRUD {
         }
     }
 
-    public Admin getAdmin(int id) {
+    public Admin getAdmin(String username) {
+        String requete = "SELECT * FROM `admin` WHERE (username =" + String.valueOf(username) + ")";
+        Admin ad = new Admin();
         try {
-            String requete = "SELECT * FROM `admin` WHERE(id=" + String.valueOf(id) + ")";
-            AdminCRUD adc = new AdminCRUD();
-            PreparedStatement ps = mc.prepareStatement(requete);
-            ResultSet rs = ps.executeQuery();
+            Statement ps = mc.createStatement();
+            ResultSet rs = ps.executeQuery(requete);
 
             while (rs.next()) {
-                Admin ad = new Admin(rs.getString("username"), rs.getString("pass"));
-                return ad;
-            }
 
+                ad.setUsername(rs.getString("username"));
+                return ad;
+
+            }
         } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return null;
     }
 
-    public String getAdmin2(int id_ad) {
-        String requete = "SELECT email FROM `admin` WHERE (id =" + id_ad + ")";
-        String mail = "";
+    public String getAdmin2(String nom) {
+        String requete = "SELECT * FROM `admin` WHERE (nom =" + nom + ")";
+        String role = "";
         try {
             PreparedStatement ps = mc.prepareStatement(requete);
             ResultSet rs = ps.executeQuery();
-            mail = rs.getString(5);
-            return mail;
+            role = rs.getString(8);
+            return role;
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());;
         }
-        return mail;
+        return role;
     }
 
     public ObservableList<Admin> rechercherAdminById(String esmElcolumn, String elibechtlawej3lih) {
@@ -174,9 +175,9 @@ public class AdminCRUD {
         return AdminList.stream().filter(t -> t.getId() == id).collect(Collectors.toList());
     }
 
-    public void affecterAdminRolle(String role_a) {
+    public void affecterAdminRolle(String nom_a, String role_a) {
         try {
-            String requete = "update Admin SET `role`='" + role_a + "'  ";
+            String requete = "update Admin SET `role`='" + role_a + "' Where `nom`='" + nom_a + "'  ";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.executeUpdate();
             System.out.println("Admin Affecté !!");
@@ -185,28 +186,6 @@ public class AdminCRUD {
         }
     }
 
-//    public Admin Login(String user, String password) throws Exception {
-//        Admin ad = new Admin();
-//        try {
-//            String requete = "SELECT username , pass  FROM admin "
-//                    + "where username=? AND `pass`=? ";
-//            PreparedStatement st = mc.prepareStatement(requete);
-//            ResultSet rs = st.executeQuery();
-//            if (user.equals(rs.getString("username")) && password.equals(rs.getString("pass"))) {
-//
-//                System.out.println("LOGIN accepté :)");
-//                Session.start();
-//
-//            } else {
-//                System.out.println("LOGIN refusé :( \n"
-//                        + "Vérifier vos données");
-//            }
-//
-//        } catch (SQLException ex) {
-//            System.err.println(ex.getMessage());
-//        }
-//        return ad;
-//    }
     public boolean Login1(String user, String password) throws Exception {
         boolean checkUser = false;
         Admin ad = new Admin();
@@ -227,27 +206,6 @@ public class AdminCRUD {
         }
 
         return checkUser;
-    }
-
-    public int checkParent(String Username,String Password) {
-        String requete = "SELECT count(*) FROM `Admin` WHERE `Username` = '" + Username + "' AND `pass`='"+Password+"' ";
-        PreparedStatement pst;
-        int check = 0;
-        try {
-
-            ResultSet rs;
-            pst = mc.prepareStatement(requete);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                check = rs.getInt(1);
-            }
-
-            return check;
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return check;
     }
 
 }

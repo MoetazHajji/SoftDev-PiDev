@@ -50,10 +50,10 @@ public class LoginController implements Initializable {
     private void Login(ActionEvent event) {
         try {
             AdminCRUD adc = new AdminCRUD();
+            Admin ad =new Admin();
             adc.Login1(TFUsername.getText(), TFPassword.getText());
             closeStage();
             loadMain();
-            Session.start();
         } catch (Exception ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,7 +63,7 @@ public class LoginController implements Initializable {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("HomeAdminPannel.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Library Assistant");
+            stage.setTitle("CULTUN");
             stage.setScene(new Scene(parent));
             stage.show();
         }

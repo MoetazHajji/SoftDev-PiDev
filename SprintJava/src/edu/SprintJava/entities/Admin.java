@@ -120,6 +120,11 @@ public class Admin {
         this.username = username;
         this.pass = pass;
     }
+
+    public Admin(String username) {
+        this.username = username;
+    }
+    
     
     
     @Override

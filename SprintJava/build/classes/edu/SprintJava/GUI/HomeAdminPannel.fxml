@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -42,7 +43,7 @@
             <Button fx:id="btnAdminList" layoutX="72.0" layoutY="160.0" mnemonicParsing="false" onAction="#AfficherAdminList" prefHeight="50.0" prefWidth="162.0" scaleShape="false" text="Admin List" />
             <Button fx:id="btnLivreurList" layoutX="72.0" layoutY="260.0" mnemonicParsing="false" onAction="#AfficherLivreurList" prefHeight="50.0" prefWidth="162.0" scaleShape="false" text="Livreur List" />
             <Button fx:id="btnClientList" layoutX="72.0" layoutY="210.0" mnemonicParsing="false" onAction="#AfficherClientList" prefHeight="50.0" prefWidth="162.0" scaleShape="false" text="Client List" />
-            <Button layoutX="72.0" layoutY="606.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="162.0" text="Settings">
+            <Button layoutX="72.0" layoutY="606.0" mnemonicParsing="false" onAction="#AfficherSettingPannel" prefHeight="50.0" prefWidth="162.0" text="Settings">
                <opaqueInsets>
                   <Insets left="50.0" />
                </opaqueInsets></Button>
@@ -101,25 +102,6 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnlClient" layoutY="-8.0" prefHeight="714.0" prefWidth="1015.0" style="-fx-background-color: black;">
-               <children>
-                  <TableView fx:id="TVClient" layoutX="188.0" layoutY="345.0" prefHeight="333.0" prefWidth="800.0">
-                    <columns>
-                      <TableColumn fx:id="TCNomClient" prefWidth="75.0" text="Nom" />
-                      <TableColumn fx:id="TCPrenomClient" prefWidth="75.0" text="Prenom" />
-                        <TableColumn fx:id="TCDateNaissance" prefWidth="116.0" text="Date de Naissance" />
-                        <TableColumn fx:id="TCPaysVille" prefWidth="76.0" text="Pays et Ville" />
-                        <TableColumn fx:id="TCMobile" prefWidth="77.0" text="Mobile" />
-                        <TableColumn fx:id="TCEmailClient" prefWidth="118.0" text="Email" />
-                        <TableColumn fx:id="TCUsernameClient" prefWidth="67.0" text="Username" />
-                        <TableColumn fx:id="TCPasswordClient" prefWidth="92.0" text="Password" />
-                        <TableColumn fx:id="TCGenre" prefWidth="103.0" text="Genre" />
-                    </columns>
-                  </TableView>
-                  <TextField fx:id="TFRechercherCli" layoutX="679.0" layoutY="303.0" prefHeight="25.0" prefWidth="177.0" promptText="Rechercher" />
-                  <Button layoutX="874.0" layoutY="303.0" mnemonicParsing="false" onAction="#RechercherClient" prefHeight="25.0" prefWidth="110.0" text="Rechercher" />
-                  <Button layoutX="138.0" layoutY="303.0" mnemonicParsing="false" onAction="#SupprimerClient" text="Supprimer" />
-               </children></Pane>
             <Pane fx:id="pnlModifyAdmin" layoutY="-9.0" prefHeight="723.0" prefWidth="1015.0" style="-fx-background-color: blue;">
                <children>
                   <Label layoutX="257.0" layoutY="30.0" prefHeight="68.0" prefWidth="444.0" text="Modification Admin :">
@@ -165,6 +147,49 @@
                   
                </cursor>
             </Pane>
+            <Pane fx:id="pnlWelcome" layoutY="-8.0" prefHeight="723.0" prefWidth="1015.0" style="-fx-background-color: Aqua;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-8.0">
+               <children>
+                  <Label layoutX="120.0" layoutY="93.0" prefHeight="88.0" prefWidth="211.0" text="Welcome :">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="548.0" text="About CULTUN:">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LBSession" layoutX="745.0" layoutY="16.0" prefHeight="29.0" prefWidth="211.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Line endX="761.0" layoutX="151.0" layoutY="600.0" startX="-100.0" />
+                  <Button layoutX="113.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadLinkedIN" text="LinkedIN" />
+                  <Button layoutX="279.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadFacebook" text="Facebook" />
+                  <Button layoutX="456.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadBlog" text="Website" />
+                  <Button layoutX="678.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadYoutubeChannel" text="Youtube" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlClient" layoutY="-8.0" prefHeight="714.0" prefWidth="1015.0" style="-fx-background-color: black;">
+               <children>
+                  <TableView fx:id="TVClient" layoutX="188.0" layoutY="345.0" prefHeight="333.0" prefWidth="800.0">
+                    <columns>
+                      <TableColumn fx:id="TCNomClient" prefWidth="75.0" text="Nom" />
+                      <TableColumn fx:id="TCPrenomClient" prefWidth="75.0" text="Prenom" />
+                        <TableColumn fx:id="TCDateNaissance" prefWidth="116.0" text="Date de Naissance" />
+                        <TableColumn fx:id="TCPaysVille" prefWidth="76.0" text="Pays et Ville" />
+                        <TableColumn fx:id="TCMobile" prefWidth="77.0" text="Mobile" />
+                        <TableColumn fx:id="TCEmailClient" prefWidth="118.0" text="Email" />
+                        <TableColumn fx:id="TCUsernameClient" prefWidth="67.0" text="Username" />
+                        <TableColumn fx:id="TCPasswordClient" prefWidth="92.0" text="Password" />
+                        <TableColumn fx:id="TCGenre" prefWidth="103.0" text="Genre" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="TFRechercherCli" layoutX="679.0" layoutY="303.0" prefHeight="25.0" prefWidth="177.0" promptText="Rechercher" />
+                  <Button layoutX="874.0" layoutY="303.0" mnemonicParsing="false" onAction="#RechercherClient" prefHeight="25.0" prefWidth="110.0" text="Rechercher" />
+                  <Button layoutX="95.0" layoutY="640.0" mnemonicParsing="false" onAction="#SupprimerClient" text="Supprimer" />
+               </children></Pane>
             <Pane fx:id="pnlAdmin" layoutY="-8.0" prefHeight="723.0" prefWidth="1015.0" style="-fx-background-color: green;">
                <children>
                   <TableView fx:id="TVListeAdmin" layoutX="260.0" layoutY="261.0" prefHeight="417.0" prefWidth="741.0">
@@ -188,30 +213,13 @@
                   <Button layoutX="97.0" layoutY="649.0" mnemonicParsing="false" onAction="#SupprimerAdmin" prefHeight="29.0" prefWidth="143.0" text="Delete Selected" />
                   <Button layoutX="97.0" layoutY="602.0" mnemonicParsing="false" onAction="#AfficherAdminModify" prefHeight="29.0" prefWidth="143.0" text="Modify Admin" />
                   <Button layoutX="879.0" layoutY="224.0" mnemonicParsing="false" onAction="#RechercherAdmin" prefHeight="27.0" prefWidth="122.0" text="Rechercer" />
-               </children>
-            </Pane>
-            <Pane fx:id="pnlClient1" layoutY="-7.0" prefHeight="716.0" prefWidth="1025.0" style="-fx-background-color: Aqua;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="120.0" layoutY="93.0" prefHeight="88.0" prefWidth="211.0" text="Welcome :">
+                  <Label layoutX="97.0" layoutY="276.0" text="Set Role">
                      <font>
-                        <Font size="29.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="71.0" layoutY="548.0" text="About CULTUN:">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="745.0" layoutY="16.0" prefHeight="29.0" prefWidth="211.0" text="Label">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Line endX="761.0" layoutX="151.0" layoutY="600.0" startX="-100.0" />
-                  <Button layoutX="113.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadLinkedIN" text="LinkedIN" />
-                  <Button layoutX="279.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadFacebook" text="Facebook" />
-                  <Button layoutX="456.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadBlog" text="Website" />
-                  <Button layoutX="678.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadYoutubeChannel" text="Youtube" />
+                  <ComboBox fx:id="RoleBox" layoutX="55.0" layoutY="316.0" prefWidth="150.0" />
+                  <Button layoutX="79.0" layoutY="349.0" mnemonicParsing="false" onAction="#AffecterRole" prefHeight="25.0" prefWidth="102.0" text="Set Role" />
                </children>
             </Pane>
          </children>

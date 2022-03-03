@@ -5,6 +5,8 @@
  */
 package edu.SprintJava.entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author moete
@@ -13,7 +15,7 @@ public class Client {
     private int id;
     private String nom;
     private String prenom;
-    private String date_naissance;
+    private Date date_naissance;
     private String pays_ville;
     private int mobile;
     private String email;
@@ -21,7 +23,7 @@ public class Client {
     private String password;
     private String genre;
 
-    public Client(String nom, String prenom, String date_naissance, String pays_ville,int mobile, String email,String username, String password, String genre) {
+    public Client(String nom, String prenom, Date date_naissance, String pays_ville,int mobile, String email,String username, String password, String genre) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -49,7 +51,7 @@ public class Client {
         return prenom;
     }
 
-    public String getDate_naissance() {
+    public Date getDate_naissance() {
         return date_naissance;
     }
 
@@ -89,7 +91,7 @@ public class Client {
         this.prenom = prenom;
     }
 
-    public void setDate_naissance(String date_naissance) {
+    public void setDate_naissance(Date date_naissance) {
         this.date_naissance = date_naissance;
     }
 

@@ -5,8 +5,10 @@
  */
 package edu.SprintJava.services;
 
+import edu.SprintJava.entities.Admin;
 import edu.SprintJava.entities.Client;
 import edu.SprintJava.utils.MyConnection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +33,7 @@ public class ClientCRUD {
             PreparedStatement pst=MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setString(1,cl.getNom());
             pst.setString(2,cl.getPrenom());
-            pst.setString(3,cl.getDate_naissance());
+            pst.setDate(3,cl.getDate_naissance());
             pst.setString(4,cl.getPays_ville());
             pst.setInt(5,cl.getMobile());
             pst.setString(6,cl.getEmail());
@@ -56,7 +59,7 @@ public class ClientCRUD {
                 cl.setId(rs.getInt(1));
                 cl.setNom(rs.getString("nom"));
                 cl.setPrenom(rs.getString("prenom"));
-                cl.setDate_naissance(rs.getString("date_naissance"));
+                cl.setDate_naissance(rs.getDate("date_naissance"));
                 cl.setPays_ville(rs.getString("pays_ville"));
                 cl.setMobile(rs.getInt(6));
                 cl.setEmail(rs.getString("email"));
@@ -69,11 +72,11 @@ public class ClientCRUD {
         } 
         return ClientList;
     }
-    public void modifierClient(String nom_c,String prenom_c,String date_naissance_c,String pays_ville_c,int mobile_c,String email_c,String password_c,String genre_c){
+    public void modifierClient(String nom_c,String prenom_c,Date date_naissance_c,String pays_ville_c,int mobile_c,String email_c,String username_c,String password_c,String genre_c){
         try {
             String requete="UPDATE client SET"
-                    + "`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"',`pays_ville`='"+prenom_c+"'"
-                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `password`='"+password_c+"',`genre`='"+genre_c+"' where `nom`='"+nom_c+"' ";
+                    + "`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"',`pays_ville`='"+pays_ville_c+"'"
+                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `username`='"+username_c+"', `password`='"+password_c+"',`genre`='"+genre_c+"' where `nom`='"+nom_c+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");
@@ -103,8 +106,8 @@ public class ClientCRUD {
                 cl.setId(rs.getInt(1));
                 cl.setNom(rs.getString("nom"));
                 cl.setPrenom(rs.getString("prenom"));
-                cl.setPrenom(rs.getString("date_naissance"));
-                cl.setPrenom(rs.getString("pays_ville"));
+                cl.setDate_naissance(rs.getDate("date_naissance"));
+                cl.setPays_ville(rs.getString("pays_ville"));
                 cl.setMobile(rs.getInt(6));
                 cl.setUsername(rs.getString("usercvname"));
                 cl.setEmail(rs.getString("email"));
@@ -118,6 +121,28 @@ public class ClientCRUD {
             System.err.println(ex.getMessage());
         }
         return ClientList;
+    }
+    
+    public boolean Login1(String user, String password) throws Exception {
+        boolean checkUser = false;
+        Client ad = new Client();
+        try {
+            String requete = "SELECT * FROM client where username=? AND password=? ";
+            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
+            pst.setString(1, user);
+            pst.setString(2, password);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "USERNAME AND PASSWORD MATCHED :)");
+            } else {
+                checkUser = false;
+                JOptionPane.showMessageDialog(null, "USERNAME OR PASSWORD DO NOT MATCH");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return checkUser;
     }
     
 }

@@ -12,36 +12,37 @@ import edu.SprintJava.services.AdminCRUD;
  * @author moete
  */
 public class Session {
-    private static int idAdmin;
+     private static int idAdmin;
+     private static String Username;
+   
 
-    public static void start() throws Exception {
-        getCurrentSession();
+    public static void start(int currentUserID) {
+        idAdmin = currentUserID;
     }
-    
-    public int start(int currentUserID){
-        return currentUserID;
-    }
-    
+
     public static int getCurrentSession() throws Exception {
-        if(idAdmin!=-1){            
+        if (idAdmin != -1) {
             return idAdmin;
-        }else {
-            throw new Exception("Session has not started yet !!");
+        } else {
+            throw new Exception("Session has not started yet!");
         }
     }
-    
+
     public static void close() throws Exception {
-        if(idAdmin!=-1){
-            idAdmin=-1;
-        }else{
-            throw new Exception("Session has not strated yet !!");
+        if (idAdmin != -1) {
+            idAdmin = -1;
+        } else {
+            throw new Exception("Session has not started yet!");
         }
     }
-    public static Admin get(){
-        AdminCRUD u=new AdminCRUD();
+    public static Admin get()
+    {
+        AdminCRUD adc = new AdminCRUD();
         
-       Admin user  = u.getAdmin(idAdmin);
-        return null;
+        Admin ad = adc.getAdmin(Username);
+        return ad;
+        
     }
+
     
 }

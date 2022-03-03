@@ -80,5 +80,28 @@ public class ControleSaisie {
             
         return  date1;
     }
+    //********************************Cin contient 8 chiffres **************************************/
+
+	public boolean Cin(String num) {
+		String masque = "[0-9]{8}$";
+		Pattern pattern = Pattern.compile(masque);
+		Matcher controler = pattern.matcher(num);
+		if (controler.matches()) {
+			return true;
+		}
+		return false;
+	}
+    //********************************Cin contient 8 chiffres **************************************/
+
+	public boolean Mobile(String num) {
+		String masque = "[0-9]{8}$";
+		Pattern pattern = Pattern.compile(masque);
+		Matcher controler = pattern.matcher(num);
+		if (controler.matches()) {
+			return true;
+		}
+		return false;
+	}
+        
     
 }

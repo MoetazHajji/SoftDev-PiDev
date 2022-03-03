@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -36,6 +38,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -52,6 +55,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
@@ -104,7 +108,7 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private TableColumn<Client, String> TCPrenomClient;
     @FXML
-    private TableColumn<Client, String> TCDateNaissance;
+    private TableColumn<Client, Date> TCDateNaissance;
     @FXML
     private TableColumn<Client, String> TCPaysVille;
     @FXML
@@ -162,16 +166,26 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private TextField TFRechercherCli;
     @FXML
-    private Pane pnlClient1;
-
+    private Pane pnlWelcome;
+    @FXML
+    private Label LBSession;
+    @FXML
+    private ComboBox<String> RoleBox;
+    
+    
+    
+    ObservableList<String> Roles = FXCollections.observableArrayList("Master","Evenement", "Produit", "Hebergement", "Restaurant", "Activité", "Patrimoine");
     /*
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        //******** Lister dans table admin *****************/
         AdminCRUD adc = new AdminCRUD();
+        //************ Affecter Role**************/
+        RoleBox.setItems(Roles);
+        RoleBox.setValue("Master");
+        //******** Lister dans table admin *****************/
+        
         ObservableList<Admin> liste = FXCollections.observableArrayList();
         liste= adc.ListerAdmin();
         remplirTableAdmin(liste );
@@ -185,8 +199,31 @@ public class HomeAdminPannelController implements Initializable {
         ObservableList<Livreur> listeLivreur=FXCollections.observableArrayList();
         listeLivreur=lic.ListerLivreur();
         remplirTableLivreur(listeLivreur);
+        
 //        LoadDataLivreur();
 //        LoadDataAdmin();
+    }
+    
+    @FXML
+    private void AffecterRole(ActionEvent event) {
+        AdminCRUD adc=new AdminCRUD();
+        adc.affecterAdminRolle(TVListeAdmin.getSelectionModel().getSelectedItem().getNom(), RoleBox.getValue());
+        loadMain();
+        closeStage();
+    }
+    
+    
+    
+    @FXML
+    private void AfficherSettingPannel(ActionEvent event) throws NullPointerException {
+        AdminCRUD adc=new AdminCRUD();
+        pnlWelcome.toFront();
+        Admin adminSession = Session.get();
+        
+        Admin e = adc.getAdmin(adminSession.getUsername());
+        System.out.println(e.getUsername());
+//       LBSession.setText(e.getUsername());
+        
     }
     private void loadWebpage(String url) {
         try {
@@ -195,6 +232,9 @@ public class HomeAdminPannelController implements Initializable {
             e1.printStackTrace();
             handleWebpageLoadException(url);
         }
+    }
+    private void closeStage() {
+        ((Stage) TFRechercheAd.getScene().getWindow()).close();
     }
 
     private void handleWebpageLoadException(String url) {
@@ -431,9 +471,22 @@ public class HomeAdminPannelController implements Initializable {
             alert.close();
         }
     }
-
+        void loadMain() {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("HomeAdminPannel.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("CULTUN");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
-   
 
-    
+
 }
+
+    
+
