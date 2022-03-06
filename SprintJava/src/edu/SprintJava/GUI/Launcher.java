@@ -22,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author moete
  */
-public class ClientFXMain extends Application {
+public class Launcher extends Application {
     
     @Override
     public void start(Stage primaryStage) {

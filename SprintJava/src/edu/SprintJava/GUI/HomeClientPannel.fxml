@@ -1,161 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.HomeClientPannelController">
+<AnchorPane id="AnchorPane" prefHeight="712.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.HomeClientPannelController">
    <children>
-      <MenuBar layoutY="-1.0" prefHeight="30.0" prefWidth="1066.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <AnchorPane layoutY="29.0" prefHeight="569.0" prefWidth="222.0">
+      <AnchorPane layoutY="5.0" prefHeight="766.0" prefWidth="291.0" style="-fx-background-color: Purple;">
          <children>
-            <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" onAction="#AfficherPaneActua" prefHeight="30.0" prefWidth="161.0" text="Actualité" />
-            <Button layoutX="32.0" layoutY="95.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="161.0" text="Evenement" />
-            <Button layoutX="31.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="161.0" text="Patrimoine" />
-            <Button layoutX="32.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="161.0" text="Restaurant" />
-            <Button layoutX="32.0" layoutY="248.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="161.0" text="Hebergement" />
-            <Button layoutX="31.0" layoutY="293.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="161.0" text="Activite" />
-            <Button layoutX="32.0" layoutY="342.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="161.0" text="Produit" />
-            <Button layoutX="160.0" layoutY="530.0" mnemonicParsing="false" text="Log out" />
-            <Button layoutX="32.0" layoutY="490.0" mnemonicParsing="false" onAction="#AfficherSettingsPane" prefHeight="30.0" prefWidth="161.0" text="Settings" />
+            <Button layoutX="199.0" layoutY="705.0" mnemonicParsing="false" onAction="#Logout" prefHeight="25.0" prefWidth="92.0" stylesheets="@../Css/fullPackStyling.css" text="Logout" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="GOOGLE" size="20" />
+               </graphic>
+            </Button>
+            <VBox layoutY="-8.0" prefHeight="711.0" prefWidth="291.0" style="-fx-background-color: PURPLE;">
+               <children>
+                  <Pane prefHeight="305.0" prefWidth="291.0">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="45.0" layoutY="86.0" size="40" />
+                        <Label layoutX="93.0" layoutY="52.0" text="CULTUN" textFill="WHITE">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="149.0" fitWidth="200.0" layoutX="45.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="258.0" prefHeight="41.0" prefWidth="148.0" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="291.0" scaleShape="false" stylesheets="@../Css/fullPackStyling.css" text="Profile" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" size="20" />
+                     </graphic>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="291.0" scaleShape="false" stylesheets="@../Css/fullPackStyling.css" text="Notifications" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" size="20" />
+                     </graphic>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="159.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="291.0" scaleShape="false" stylesheets="@../Css/fullPackStyling.css" text="Settings" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="GEAR" size="20" />
+                     </graphic>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="291.0" scaleShape="false" stylesheets="@../Css/fullPackStyling.css" text="Privacy Policy" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="20" />
+                     </graphic>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
-      <Pane fx:id="pnlClient" layoutX="225.0" layoutY="29.0" prefHeight="569.0" prefWidth="842.0" style="-fx-background-color: Aquamarine;">
-         <children>
-            <Label layoutX="23.0" layoutY="14.0" prefHeight="40.0" prefWidth="171.0" text="Basic Details">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Line endX="683.0" layoutX="124.0" layoutY="55.0" startX="-100.0" />
-            <Label layoutX="71.0" layoutY="79.0" text="First name">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label fx:id="LBNom" layoutX="206.0" layoutY="79.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="70.0" layoutY="127.0" text="Last name">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label fx:id="LBPrenom" layoutX="206.0" layoutY="127.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="75.0" layoutY="171.0" text="Mobile">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label fx:id="LBMobile" layoutX="211.0" layoutY="175.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="64.0" layoutY="272.0" text="Username">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="70.0" layoutY="358.0" text="Email">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="23.0" layoutY="216.0" text="Security and login">
-               <font>
-                  <Font size="28.0" />
-               </font></Label>
-            <Label fx:id="LBUsername" layoutX="220.0" layoutY="272.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="66.0" layoutY="315.0" text="Password">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label fx:id="LBPassword" layoutX="219.0" layoutY="315.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Line endX="683.0" layoutX="124.0" layoutY="256.0" startX="-100.0" />
-            <Line endX="683.0" layoutX="129.0" layoutY="434.0" startX="-100.0" />
-            <Label fx:id="LBEmail" layoutX="219.0" layoutY="358.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="394.0" text="Location">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Label layoutX="67.0" layoutY="451.0" prefHeight="25.0" prefWidth="84.0" text="Pays Ville">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="LBPaysVille" layoutX="219.0" layoutY="451.0" text="Label">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Button layoutX="756.0" layoutY="487.0" mnemonicParsing="false" onAction="#ModifierClient" text="Update" />
-            <Button layoutX="757.0" layoutY="530.0" mnemonicParsing="false" onAction="#SupprimerClient" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: red;" text="Delete" />
-            <Pane fx:id="pnlActualite" prefHeight="569.0" prefWidth="842.0" style="-fx-background-color: DarkMagenta;">
-               <children>
-                  <ImageView fitHeight="259.0" fitWidth="412.0" layoutX="16.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Downloads/patr.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="244.0" fitWidth="397.0" layoutX="437.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Downloads/heber.PNG" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="280.0" fitWidth="420.0" layoutX="431.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Downloads/exper.PNG" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="282.0" layoutY="23.0" prefHeight="25.0" prefWidth="113.0" text="Welcome ">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="271.0" fitWidth="222.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Downloads/Mon%20projet%20(6)%20(1).png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
+      <AnchorPane layoutX="291.0" prefHeight="771.0" prefWidth="929.0" />
    </children>
 </AnchorPane>

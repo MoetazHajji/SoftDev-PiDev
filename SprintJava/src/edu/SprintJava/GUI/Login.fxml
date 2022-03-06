@@ -106,14 +106,14 @@
             </HBox>
             <Pane prefHeight="46.0" prefWidth="482.0">
                <children>
-                  <Label fx:id="LBError" layoutX="98.0" layoutY="4.0" prefHeight="36.0" prefWidth="265.0">
+                  <Label fx:id="LBError" layoutX="67.0" layoutY="4.0" prefHeight="36.0" prefWidth="355.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="75.0" prefWidth="482.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#Login" prefHeight="41.0" prefWidth="380.0" stylesheets="@../Css/fullPackStyling.css" text="Login" textFill="WHITE">
                      <HBox.margin>
@@ -125,7 +125,7 @@
                   </Button>
                </children>
             </HBox>
-            <Label graphicTextGap="10.0" prefHeight="28.0" prefWidth="470.0" text="Forget Password?" textFill="PURPLE">
+            <Label graphicTextGap="10.0" prefHeight="28.0" prefWidth="477.0" text="Forget Password?" textFill="PURPLE">
                <padding>
                   <Insets left="240.0" right="100.0" />
                </padding>

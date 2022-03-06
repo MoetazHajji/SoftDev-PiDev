@@ -26,6 +26,7 @@ public class LivreurCRUD {
             String requete = "insert into livreur(nom,prenom,email,username,password)"
                     + "values(?,?,?,?,?)";
             PreparedStatement pst=MyConnection.getInstance().getCnx().prepareStatement(requete);
+            
             pst.setString(1,a.getNom());
             pst.setString(2,a.getPrenom());
             pst.setString(3,a.getEmail());

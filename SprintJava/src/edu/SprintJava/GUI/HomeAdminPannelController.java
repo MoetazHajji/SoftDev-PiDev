@@ -14,6 +14,7 @@ import edu.SprintJava.services.AdminCRUD;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.LivreurCRUD;
 import edu.SprintJava.services.User_service;
+import edu.SprintJava.utils.ControleSaisie;
 import edu.SprintJava.utils.Notification;
 import java.awt.AWTException;
 import java.awt.Desktop;
@@ -52,6 +53,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -170,8 +172,6 @@ public class HomeAdminPannelController implements Initializable {
     private Pane pnlModifyLivreur;
     @FXML
     private Button btnLivreurList1;
-    @FXML
-    private Label LBSession1;
     @FXML
     private Label name;
     /*
@@ -360,7 +360,7 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private void Logout(ActionEvent event) throws Exception {
         try {
-                Parent root=FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Parent root=FXMLLoader.load(getClass().getResource("LoginClient.fxml"));
             Scene scene=new Scene(root);
             Stage stage=(Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -420,7 +420,7 @@ public class HomeAdminPannelController implements Initializable {
     private void RechercherLivreur(ActionEvent event) {
         LivreurCRUD lic = new LivreurCRUD();
          ObservableList<Livreur> list = FXCollections.observableArrayList();
-         list=lic.rechercherLivreurById("nom", TFRechercheLiv.getText());
+         list=lic.rechercherLivreurById("nom", TFNomLivreur.getText());
          TCNomLivreur.setCellValueFactory(new PropertyValueFactory<>("nom"));
          TCPrenomLivreur.setCellValueFactory(new PropertyValueFactory<>("prenom"));
          TCEmailLivreur.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -480,23 +480,14 @@ public class HomeAdminPannelController implements Initializable {
         }
     }
 
-    @FXML
-    private void AjouterLivreur(ActionEvent event) {
-        LivreurCRUD lic=new LivreurCRUD();
-        Livreur li=new Livreur();
-        li.setNom(TFNomLivreur.getText());
-        li.setPrenom(TFPrenomLivreur.getText());
-        li.setEmail(TFEmailLivreur.getText());
-        li.setUsername(TFUsernameLivreur.getText());
-        li.setPassword(TFPasswordLivreur.getText());
-        lic.ajouterLivreur(li);
-    }
+   
 
     @FXML
     private void GoToModifierLivreur(MouseEvent event) {
         pnlModifyLivreur.toFront();
     }
 
+    @FXML
     private void SupprimerLivreur(ActionEvent event) throws AWTException {
          Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Suppression Livreur");
@@ -508,7 +499,7 @@ public class HomeAdminPannelController implements Initializable {
             Livreur cl=new Livreur();
             cl=TVLivreur.getSelectionModel().getSelectedItem();
             clc.supprimerLivreur(cl.getNom());
-                Notification.main("Livreur !", "Livreur supprimé avec succé !!");       
+                Notification.main("Admin "+name.getText()+"Livreur !", "Livreur supprimé avec succé !!");       
                 ObservableList<Livreur> liste=FXCollections.observableArrayList();
                 liste=clc.ListerLivreur();
                 remplirTableLivreur(liste);
@@ -518,14 +509,41 @@ public class HomeAdminPannelController implements Initializable {
         }
     }
 
-    @FXML
-    private void AjouterLivreur(MouseEvent event) {
-    }
+    
 
     @FXML
-    private void SupprimerLivreur(MouseEvent event) {
+    private void AjouterLivreur(ActionEvent event) throws AWTException, IOException {
+        LivreurCRUD lic=new LivreurCRUD();
+        ControleSaisie cs = new ControleSaisie();
+        if(!cs.testNomPrenom(TFNomLivreur.getText())){
+            JOptionPane.showMessageDialog(null,"First name is non Valid please enter only Alphabet !! ");
+        }
+        else if(!cs.testNomPrenom(TFPrenomLivreur.getText())){
+            JOptionPane.showMessageDialog(null,"Last name is non Valid please enter only Alphabet !! ");
+        }
+        else if(!cs.testNomPrenom(TFEmailLivreur.getText())){
+            JOptionPane.showMessageDialog(null,"Invalid Email !!");
+        }
+        else if(!cs.testUsername(TFUsernameLivreur.getText())){
+            JOptionPane.showMessageDialog(null,"Username Invalid ");
+        }
+        else if(!cs.testPassword(TFPasswordLivreur.getText())){
+            JOptionPane.showMessageDialog(null,"Password is not Strong ");
+        }
+        
+        else{
+            Livreur li = new Livreur(TFNomLivreur.getText(), TFPrenomLivreur.getText(), TFUsernameLivreur.getText(), TFEmailLivreur.getText(), TFPasswordLivreur.getText());
+            lic.ajouterLivreur(li);
+            User_service us = new User_service();
+            us.ajouterUser(new User(TFUsernameLivreur.getText(),TFPasswordLivreur.getText(),"Livreur"));
+            JOptionPane.showMessageDialog(null,"Livreur Added");
+            Notification.main("Admin "+name.getText() +"Livreur !!", "New Livreur "+TFUsernameLivreur.getText()+"added Succefuly ");
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("HomeAdminPannel.fxml"));
+            pnlLivreur.toFront();
+            Parent root = loader.load();
+            TFNomLivreur.getScene().setRoot(root);
+        }
     }
-    
 
 
 }

@@ -61,11 +61,11 @@ public class LoginClientController implements Initializable {
     }
 
     @FXML
-    private void LoginClient(ActionEvent event) {
+    private void LoginClient(ActionEvent event) throws IOException{
         User_service us = new User_service();
         User u = new User();
         u.setUsername(TFUsername.getText());
-        u.setPass(PFPassword.getText());
+        u.setPass(TFPassword.getText());
         int attempt = 1;
         if (us.Authentification(u)) {
             Parent home_page_parent;
@@ -84,7 +84,7 @@ public class LoginClientController implements Initializable {
                 }
 
             } else if (us.checkRole(TFUsername.getText()).equals("Client") && attempt < 4) {
-                home_page_parent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+                home_page_parent = FXMLLoader.load(getClass().getResource("HomeClientPannel.fxml"));
                 Scene home_page_scene = new Scene(home_page_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 app_stage.hide();
