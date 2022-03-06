@@ -58,7 +58,7 @@ public class ControleSaisie {
     
     //******************************TEST FORMAT EMAIL**************************************************//
     public boolean mailFormat(String mail){
-        masque ="^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z-9]@[a-zA-Z]+"
+        masque ="^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
                 + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
         Pattern pattern=Pattern.compile(masque);
         Matcher controller = pattern.matcher(mail);
@@ -102,6 +102,8 @@ public class ControleSaisie {
 		}
 		return false;
 	}
+        
+        
         
     
 }

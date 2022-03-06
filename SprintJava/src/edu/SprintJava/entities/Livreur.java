@@ -26,6 +26,13 @@ public class Livreur {
         this.username = username;
         this.password = password;
     }
+    public Livreur( String nom, String prenom,String email,String username,String password) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 
     public Livreur() {
     }

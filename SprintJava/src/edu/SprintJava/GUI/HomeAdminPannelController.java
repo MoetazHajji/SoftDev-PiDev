@@ -5,6 +5,7 @@
  */
 package edu.SprintJava.GUI;
 
+import edu.SprintJava.entities.User;
 import edu.SprintJava.entities.Admin;
 import edu.SprintJava.entities.Client;
 import edu.SprintJava.entities.Livreur;
@@ -12,6 +13,7 @@ import edu.SprintJava.entities.Session;
 import edu.SprintJava.services.AdminCRUD;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.LivreurCRUD;
+import edu.SprintJava.services.User_service;
 import edu.SprintJava.utils.Notification;
 import java.awt.AWTException;
 import java.awt.Desktop;
@@ -20,7 +22,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,7 +29,6 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,23 +40,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.SortEvent;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -99,8 +94,6 @@ public class HomeAdminPannelController implements Initializable {
     private TableColumn<Admin, String> TCPassword;
     @FXML
     private TableColumn<Admin, String> TCRole;
-    @FXML
-    private Label TitreAdmin;
     @FXML
     private TableView<Client> TVClient;
     @FXML
@@ -168,24 +161,37 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private Pane pnlWelcome;
     @FXML
-    private Label LBSession;
-    @FXML
     private ComboBox<String> RoleBox;
     
     
     
     ObservableList<String> Roles = FXCollections.observableArrayList("Master","Evenement", "Produit", "Hebergement", "Restaurant", "Activité", "Patrimoine");
+    @FXML
+    private Pane pnlModifyLivreur;
+    @FXML
+    private Button btnLivreurList1;
+    @FXML
+    private Label LBSession1;
+    @FXML
+    private Label name;
     /*
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        AdminCRUD adc = new AdminCRUD();
+    public void initialize(URL url, ResourceBundle rb){
+        pnlWelcome.toFront();
+        User_service us = new User_service();
+        User usr = new User();
+            User usersession = us.findById(Session.getUser().getId());
+        
+       //System.out.println(usersession);
+        //Admin ad =adc.getAdmin(usersession.getMail());
+        name.setText(usersession.getUsername());
         //************ Affecter Role**************/
         RoleBox.setItems(Roles);
         RoleBox.setValue("Master");
         //******** Lister dans table admin *****************/
-        
+        AdminCRUD adc= new AdminCRUD();
         ObservableList<Admin> liste = FXCollections.observableArrayList();
         liste= adc.ListerAdmin();
         remplirTableAdmin(liste );
@@ -214,17 +220,13 @@ public class HomeAdminPannelController implements Initializable {
     
     
     
-    @FXML
     private void AfficherSettingPannel(ActionEvent event) throws NullPointerException {
         AdminCRUD adc=new AdminCRUD();
         pnlWelcome.toFront();
-        Admin adminSession = Session.get();
         
-        Admin e = adc.getAdmin(adminSession.getUsername());
-        System.out.println(e.getUsername());
-//       LBSession.setText(e.getUsername());
         
     }
+    
     private void loadWebpage(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
@@ -358,27 +360,21 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private void Logout(ActionEvent event) throws Exception {
         try {
-            System.out.println("Se deconnecter");
-            Session.close();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            Parent root=loader.load();
-            TitreAdmin.getScene().setRoot(root);
+                Parent root=FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Scene scene=new Scene(root);
+            Stage stage=(Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+            
+            Notification.main("Admin !!", "Session Ended !!");
         } catch (IOException ex) {
             Logger.getLogger(HomeAdminPannelController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
-    @FXML
-    private void AjouterLivreur(ActionEvent event) {
-        LivreurCRUD lic=new LivreurCRUD();
-        Livreur li=new Livreur();
-        li.setNom(TFNomLivreur.getText());
-        li.setPrenom(TFPrenomLivreur.getText());
-        li.setEmail(TFEmailLivreur.getText());
-        li.setUsername(TFUsernameLivreur.getText());
-        li.setPassword(TFPasswordLivreur.getText());
-        lic.ajouterLivreur(li);
-    }
+    
     @FXML
     private void AfficherAdminModify(ActionEvent event) {
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
@@ -453,16 +449,16 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private void SupprimerClient(ActionEvent event) throws AWTException {
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Suppression Admin");
+        alert.setTitle("Suppression Client");
         alert.setHeaderText("Supprimer"+TVClient.getSelectionModel().getSelectedItem().getId());
-        alert.setContentText("Vous voulez vraiment supprimer l'admin " +TVClient.getSelectionModel().getSelectedItem().getNom() + " ?");
+        alert.setContentText("Vous voulez vraiment supprimer le client " +TVClient.getSelectionModel().getSelectedItem().getNom() + " ?");
         Optional<ButtonType> result =alert.showAndWait();
         if(result.get()==ButtonType.OK){
             ClientCRUD clc=new ClientCRUD();
             Client cl=new Client();
             cl=TVClient.getSelectionModel().getSelectedItem();
             clc.supprimerClient(cl.getNom());
-                Notification.main("Admin !", "Admin supprimé avec succé !!");       
+                Notification.main("Client !", "Client supprimé avec succé !!");       
                 ObservableList<Client> liste=FXCollections.observableArrayList();
                 liste=clc.ListerClient();
                 remplirTableClient(liste);
@@ -482,6 +478,52 @@ public class HomeAdminPannelController implements Initializable {
         catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void AjouterLivreur(ActionEvent event) {
+        LivreurCRUD lic=new LivreurCRUD();
+        Livreur li=new Livreur();
+        li.setNom(TFNomLivreur.getText());
+        li.setPrenom(TFPrenomLivreur.getText());
+        li.setEmail(TFEmailLivreur.getText());
+        li.setUsername(TFUsernameLivreur.getText());
+        li.setPassword(TFPasswordLivreur.getText());
+        lic.ajouterLivreur(li);
+    }
+
+    @FXML
+    private void GoToModifierLivreur(MouseEvent event) {
+        pnlModifyLivreur.toFront();
+    }
+
+    private void SupprimerLivreur(ActionEvent event) throws AWTException {
+         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Suppression Livreur");
+        alert.setHeaderText("Supprimer"+TVLivreur.getSelectionModel().getSelectedItem().getId());
+        alert.setContentText("Vous voulez vraiment supprimer le livreur  " +TVLivreur.getSelectionModel().getSelectedItem().getNom() + " ?");
+        Optional<ButtonType> result =alert.showAndWait();
+        if(result.get()==ButtonType.OK){
+            LivreurCRUD clc=new LivreurCRUD();
+            Livreur cl=new Livreur();
+            cl=TVLivreur.getSelectionModel().getSelectedItem();
+            clc.supprimerLivreur(cl.getNom());
+                Notification.main("Livreur !", "Livreur supprimé avec succé !!");       
+                ObservableList<Livreur> liste=FXCollections.observableArrayList();
+                liste=clc.ListerLivreur();
+                remplirTableLivreur(liste);
+        }
+        if(result.get()==ButtonType.CANCEL){
+            alert.close();
+        }
+    }
+
+    @FXML
+    private void AjouterLivreur(MouseEvent event) {
+    }
+
+    @FXML
+    private void SupprimerLivreur(MouseEvent event) {
     }
     
 

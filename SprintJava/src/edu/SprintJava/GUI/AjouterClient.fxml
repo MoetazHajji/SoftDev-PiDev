@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AjouterClientController">
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="1090.0" style="-fx-background-color: DarkMagenta;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AjouterClientController">
    <children>
       <TextField fx:id="TFPrenom" layoutX="821.0" layoutY="137.0" prefHeight="25.0" prefWidth="221.0" promptText="Last name" />
       <TextField fx:id="TFMobile" layoutX="385.0" layoutY="294.0" prefHeight="25.0" prefWidth="221.0" promptText="Mobile" />

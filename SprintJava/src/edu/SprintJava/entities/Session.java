@@ -5,44 +5,68 @@
  */
 package edu.SprintJava.entities;
 
-import edu.SprintJava.services.AdminCRUD;
+
+import edu.SprintJava.services.User_service;
 
 /**
  *
  * @author moete
  */
 public class Session {
-     private static int idAdmin;
-     private static String Username;
-   
-
-    public static void start(int currentUserID) {
-        idAdmin = currentUserID;
-    }
-
-    public static int getCurrentSession() throws Exception {
-        if (idAdmin != -1) {
-            return idAdmin;
-        } else {
-            throw new Exception("Session has not started yet!");
-        }
-    }
-
-    public static void close() throws Exception {
-        if (idAdmin != -1) {
-            idAdmin = -1;
-        } else {
-            throw new Exception("Session has not started yet!");
-        }
-    }
-    public static Admin get()
-    {
-        AdminCRUD adc = new AdminCRUD();
-        
-        Admin ad = adc.getAdmin(Username);
-        return ad;
-        
-    }
-
+       private static final User_service fs = new User_service();
     
+    private static Session instance = null;
+    private  static User user = null;
+
+
+  
+    
+    private Session(User userConnected) {
+        super();
+        Session.user = userConnected;
+    }
+    
+    public final static Session getInstance(User userConnected) {
+
+        if (Session.instance == null) {
+            Session.instance = new Session(userConnected);
+
+        }
+        System.out.println(Session.instance);
+        return Session.instance;
+    }
+    
+    public final static Session getFirstInstance(User userConnected) {
+
+        if (Session.instance == null) {
+
+            Session.instance = new Session(userConnected);
+         //   System.out.println(userConnected.getId());
+      
+        }
+        return Session.instance;
+    }
+
+    public static User_service getFs() {
+        return fs;
+    }
+
+    public static Session getInstance() {
+        return instance;
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public Session() {
+    }
+
+
+    public static void setUser(User user) {
+        Session.user = user;
+    }
+
 }
+    
+

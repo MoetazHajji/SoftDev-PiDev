@@ -71,13 +71,13 @@ public class LivreurCRUD {
         }
     }
     
-    public void supprimerLivreur(Livreur li){
+    public void supprimerLivreur(String nom_a){
         try {
-            String requete="DELETE from livreur where id=?";
+            String requete="DELETE from livreur where `nom`='" + nom_a + "'  ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
-            pst.setInt(1, li.getId());
-            pst.executeUpdate();
-            System.err.println("livreur deleted");
+            Statement st = MyConnection.getInstance().getCnx().createStatement();
+            st.executeUpdate(requete);
+            System.out.println("Livreur deleted");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }

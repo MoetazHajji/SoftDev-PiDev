@@ -6,7 +6,9 @@
 package edu.SprintJava.GUI;
 
 import edu.SprintJava.entities.Client;
+import edu.SprintJava.entities.User;
 import edu.SprintJava.services.ClientCRUD;
+import edu.SprintJava.services.User_service;
 import edu.SprintJava.utils.ControleSaisie;
 import edu.SprintJava.utils.Notification;
 import java.awt.AWTException;
@@ -94,6 +96,8 @@ public class AjouterClientController implements Initializable {
             Client cl = new Client(TFNom.getText(), TFPrenom.getText(), dateD, TFPaysVille.getText(), Integer.parseInt(TFMobile.getText())
                     , TFEmail.getText(), TFUsername.getText(), TFPassword.getText(), TFGenre.getText());
             clc.ajouterClient(cl);
+            User_service us = new User_service();
+            us.ajouterUser(new User(TFUsername.getText(),TFPassword.getText(),"Admin"));
             Notification.main("Client !", TFNom.getText()+" Ajouté avec succé :) ");
             FXMLLoader loader= new FXMLLoader(getClass().getResource("LoginClient.fxml"));
             Parent root = loader.load();

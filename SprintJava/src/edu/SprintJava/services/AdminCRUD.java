@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 
 /**
@@ -108,41 +109,7 @@ public class AdminCRUD {
             Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public Admin getAdmin(String username) {
-        String requete = "SELECT * FROM `admin` WHERE (username =" + String.valueOf(username) + ")";
-        Admin ad = new Admin();
-        try {
-            Statement ps = mc.createStatement();
-            ResultSet rs = ps.executeQuery(requete);
-
-            while (rs.next()) {
-
-                ad.setUsername(rs.getString("username"));
-                return ad;
-
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return null;
-    }
-
-    public String getAdmin2(String nom) {
-        String requete = "SELECT * FROM `admin` WHERE (nom =" + nom + ")";
-        String role = "";
-        try {
-            PreparedStatement ps = mc.prepareStatement(requete);
-            ResultSet rs = ps.executeQuery();
-            role = rs.getString(8);
-            return role;
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());;
-        }
-        return role;
-    }
-
+    
     public ObservableList<Admin> rechercherAdminById(String esmElcolumn, String elibechtlawej3lih) {
         ObservableList<Admin> AdminList = FXCollections.observableArrayList();
         try {
@@ -185,6 +152,56 @@ public class AdminCRUD {
             System.err.println(ex.getMessage());
         }
     }
+     public Admin getAdmin (String mail)
+    {
+    Admin e = new Admin();
+    String requete="select * from admin where email ='"+mail+"'";
+        try {
+            Statement st =mc.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while(rs.next()){
+           
+            
+                e.setNom(rs.getString("nom"));
+                e.setPrenom(rs.getString("prenom"));
+                e.setCin(rs.getInt(4));
+                e.setUsername(rs.getString("username"));
+                e.setEmail(rs.getString("email"));
+                e.setPass(rs.getString("pass"));
+                e.setRole(rs.getString("role"));
+           
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+    
+    
+    return e;
+    
+    }
+     public Admin Login(String user, String password) {
+        Admin ad = new Admin();
+        try {
+            String requete = "SELECT username , pass  FROM admin "
+                    + "where username=? AND `pass`=? ";
+            PreparedStatement st = mc.prepareStatement(requete);
+            ResultSet rs = st.executeQuery();
+            if (user.equals(rs.getString("username")) && password.equals(rs.getString("pass"))) {
+
+                System.out.println("LOGIN accepté :)");
+
+            } else {
+                System.out.println("LOGIN refusé :( \n"
+                        + "Vérifier vos données");
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return ad;
+    }
 
     public boolean Login1(String user, String password) throws Exception {
         boolean checkUser = false;
@@ -207,5 +224,22 @@ public class AdminCRUD {
 
         return checkUser;
     }
+    public Admin loginAccount(String username){
+        String requete="select username,pass from admin where username="+username+"";
+        Admin ad = new Admin();
 
+        try { 
+            Statement st = mc.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while(rs.next()){
+            ad.setEmail(rs.getString("username"));
+            ad.setCin(rs.getInt("pass"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ad;
+    }
+    
+   
 }
