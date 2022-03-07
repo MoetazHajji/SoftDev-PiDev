@@ -5,6 +5,9 @@
  */
 package edu.SprintJava.GUI;
 
+import edu.SprintJava.entities.Session;
+import edu.SprintJava.entities.User;
+import edu.SprintJava.services.User_service;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,39 +31,26 @@ import javafx.stage.Stage;
  */
 public class HomeClientPannelController implements Initializable {
 
-    @FXML
     private Pane pnlClient;
-    @FXML
-    private Label LBNom;
-    @FXML
-    private Label LBPrenom;
-    @FXML
-    private Label LBMobile;
-    @FXML
-    private Label LBUsername;
-    @FXML
-    private Label LBPassword;
-    @FXML
-    private Label LBEmail;
-    @FXML
-    private Label LBPaysVille;
-    @FXML
     private Pane pnlActualite;
+    @FXML
+    private Label name;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pnlActualite.toFront();
+//        pnlActualite.toFront();
+        User_service us = new User_service();
+        User usersession = us.findById(Session.getUser().getId());
+        name.setText(usersession.getUsername());
     }    
 
-    @FXML
     private void AfficherSettingsPane(ActionEvent event) {
         pnlClient.toFront();
     }
 
-    @FXML
     private void ModifierClient(ActionEvent event) {
         try {
             Parent root=FXMLLoader.load(getClass().getResource("ModifierClient.fxml"));
@@ -74,13 +64,13 @@ public class HomeClientPannelController implements Initializable {
         }
     }
 
-    @FXML
-    private void SupprimerClient(ActionEvent event) {
+
+    private void AfficherPaneActua(ActionEvent event) {
+        pnlActualite.toFront();
     }
 
     @FXML
-    private void AfficherPaneActua(ActionEvent event) {
-        pnlActualite.toFront();
+    private void Logout(ActionEvent event) {
     }
     
 }

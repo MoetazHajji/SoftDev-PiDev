@@ -6,14 +6,13 @@
 package edu.SprintJava.GUI;
 
 import edu.SprintJava.entities.Admin;
-import edu.SprintJava.services.AdminCRUD;
+import edu.SprintJava.entities.Livreur;
+import edu.SprintJava.services.LivreurCRUD;
 import edu.SprintJava.utils.Notification;
 import java.awt.AWTException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author moete
  */
-public class ModifierAdminController implements Initializable {
+public class ModifierLivreurController implements Initializable {
 
     @FXML
     private TextField TFPrenom;
@@ -42,44 +40,36 @@ public class ModifierAdminController implements Initializable {
     @FXML
     private TextField TFNom;
     @FXML
-    private TextField TFCIN;
-    @FXML
     private PasswordField TFPassword;
-    @FXML
-    private ComboBox<String> CBROLE;
-    
-    ObservableList<String> Roles = FXCollections.observableArrayList("Master","Evenement", "Produit", "Hebergement", "Restaurant", "Activité", "Patrimoine");
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       TFNom.setText(Admin.getNomm());
-       TFPrenom.setText(Admin.getPrenomm());
-       TFCIN.setText(Integer.toString(Admin.getCinn()));
-       TFEmail.setText(Admin.getEmaill());
-       TFUsername.setText(Admin.getUsernamee());
-       TFPassword.setText(Admin.getPasss());
+        TFNom.setText(Livreur.getNomm());
+       TFPrenom.setText(Livreur.getPrenomm());
+       TFEmail.setText(Livreur.getEmaill());
+       TFUsername.setText(Livreur.getUsernamee());
+       TFPassword.setText(Livreur.getPasswordd());
     }    
 
     @FXML
-    private void ReturnToClientPannel(ActionEvent event) throws IOException {
+    private void ReturnToAdminPannel(ActionEvent event) throws IOException {
         Parent root=FXMLLoader.load(getClass().getResource("HomeAdminPannel.fxml"));
             Scene scene=new Scene(root);
             Stage stage=(Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-        
     }
 
     @FXML
-    private void ModifierAdmin(ActionEvent event) throws AWTException {
-        AdminCRUD adc=new AdminCRUD();
-        Admin ad=new Admin();
-            adc.modifierAdmin(Admin.getIdd(),TFNom.getText(), TFPrenom.getText(), Integer.parseInt(TFCIN.getText()), TFUsername.getText()
-                , TFEmail.getText(), TFPassword.getText());
-            Notification.main("Admin !", "Admin modifié avec succé !!");  
-            
+    private void ModifierLivreur(ActionEvent event) throws AWTException {
+        LivreurCRUD adc=new LivreurCRUD();
+        Livreur ad=new Livreur();
+            adc.modifierLivreur(Livreur.getIdd(),TFNom.getText(), TFPrenom.getText(), TFEmail.getText(), TFUsername.getText()
+                , TFPassword.getText());
+            Notification.main("Livreur !", "Livreur modifié avec succé !!"); 
     }
     
 }

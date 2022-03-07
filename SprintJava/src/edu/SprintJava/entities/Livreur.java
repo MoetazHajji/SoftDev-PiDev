@@ -16,6 +16,60 @@ public class Livreur {
     private String email;
     private String username;
     private String password;
+    private static int idd;
+    private static String nomm;
+    private static String prenomm;
+    private static String emaill;
+    private static String usernamee;
+    private static String passwordd;
+
+    public static int getIdd() {
+        return idd;
+    }
+
+    public static void setIdd(int idd) {
+        Livreur.idd = idd;
+    }
+
+    public static String getNomm() {
+        return nomm;
+    }
+
+    public static void setNomm(String nomm) {
+        Livreur.nomm = nomm;
+    }
+
+    public static String getPrenomm() {
+        return prenomm;
+    }
+
+    public static void setPrenomm(String prenomm) {
+        Livreur.prenomm = prenomm;
+    }
+
+    public static String getEmaill() {
+        return emaill;
+    }
+
+    public static void setEmaill(String emaill) {
+        Livreur.emaill = emaill;
+    }
+
+    public static String getUsernamee() {
+        return usernamee;
+    }
+
+    public static void setUsernamee(String usernamee) {
+        Livreur.usernamee = usernamee;
+    }
+
+    public static String getPasswordd() {
+        return passwordd;
+    }
+
+    public static void setPasswordd(String passwordd) {
+        Livreur.passwordd = passwordd;
+    }
     
 
     public Livreur(int id, String nom, String prenom,String email,String username,String password) {

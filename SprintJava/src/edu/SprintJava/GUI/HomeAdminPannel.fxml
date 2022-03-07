@@ -151,10 +151,52 @@
                   </Pane>
                </children>
             </Pane>
+            <Pane fx:id="pnlClient" layoutY="-8.0" prefHeight="736.0" prefWidth="1030.0" style="-fx-background-color: white;">
+               <children>
+                  <TableView fx:id="TVClient" layoutX="188.0" layoutY="345.0" prefHeight="333.0" prefWidth="800.0" stylesheets="@../Css/fullPackStyling.css">
+                    <columns>
+                      <TableColumn fx:id="TCNomClient" prefWidth="75.0" text="Nom" />
+                      <TableColumn fx:id="TCPrenomClient" prefWidth="75.0" text="Prenom" />
+                        <TableColumn fx:id="TCDateNaissance" prefWidth="116.0" text="Date de Naissance" />
+                        <TableColumn fx:id="TCPaysVille" prefWidth="76.0" text="Pays et Ville" />
+                        <TableColumn fx:id="TCMobile" prefWidth="77.0" text="Mobile" />
+                        <TableColumn fx:id="TCEmailClient" prefWidth="118.0" text="Email" />
+                        <TableColumn fx:id="TCUsernameClient" prefWidth="67.0" text="Username" />
+                        <TableColumn fx:id="TCPasswordClient" prefWidth="92.0" text="Password" />
+                        <TableColumn fx:id="TCGenre" prefWidth="103.0" text="Genre" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="TFRechercherCli" layoutX="598.0" layoutY="303.0" prefHeight="37.0" prefWidth="223.0" promptText="Rechercher" style="-fx-border-color: purple;" />
+                  <Button layoutX="841.0" layoutY="303.0" mnemonicParsing="false" onAction="#RechercherClient" prefHeight="37.0" prefWidth="143.0" stylesheets="@../Css/fullPackStyling.css" text="Rechercher" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="25" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+                  <Button layoutX="46.0" layoutY="632.0" mnemonicParsing="false" onAction="#SupprimerClient" stylesheets="@../Css/fullPackStyling.css" text="Supprimer" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="25" />
+                     </graphic></Button>
+                  <Pane layoutX="-2.0" prefHeight="119.0" prefWidth="1030.0" style="-fx-background-color: DarkSlateBlue; -fx-border-color: PURPLE;">
+                     <children>
+                        <Label layoutX="29.0" layoutY="45.0" text="/Home/Client" textFill="WHITE" />
+                        <Label layoutX="27.0" layoutY="55.0" text="Clients" textFill="WHITE">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children></Pane>
             <Pane fx:id="pnlAdmin" layoutY="-8.0" prefHeight="736.0" prefWidth="1037.0" style="-fx-background-color: white;">
                <children>
                   <TableView fx:id="TVListeAdmin" layoutX="260.0" layoutY="261.0" prefHeight="417.0" prefWidth="741.0" stylesheets="@../Css/fullPackStyling.css">
                     <columns>
+                        <TableColumn fx:id="TCid" prefWidth="75.0" text="ID" />
                       <TableColumn fx:id="TCNom" prefWidth="96.0" text="Nom" />
                       <TableColumn fx:id="TCPrenom" prefWidth="103.0" text="Prénom" />
                         <TableColumn fx:id="TCCIN" prefWidth="102.0" text="CIN" />
@@ -186,7 +228,7 @@
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="20" />
                      </graphic></Button>
-                  <Button layoutX="879.0" layoutY="224.0" mnemonicParsing="false" onAction="#RechercherAdmin" prefHeight="27.0" prefWidth="122.0" stylesheets="@../Css/fullPackStyling.css" text="Rechercer" textFill="WHITE">
+                  <Button layoutX="879.0" layoutY="224.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" stylesheets="@../Css/fullPackStyling.css" text="Rechercer" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -219,39 +261,11 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="pnlClient" layoutY="-8.0" prefHeight="736.0" prefWidth="1030.0" style="-fx-background-color: white;">
-               <children>
-                  <TableView fx:id="TVClient" layoutX="188.0" layoutY="345.0" prefHeight="333.0" prefWidth="800.0" stylesheets="@../Css/fullPackStyling.css">
-                    <columns>
-                      <TableColumn fx:id="TCNomClient" prefWidth="75.0" text="Nom" />
-                      <TableColumn fx:id="TCPrenomClient" prefWidth="75.0" text="Prenom" />
-                        <TableColumn fx:id="TCDateNaissance" prefWidth="116.0" text="Date de Naissance" />
-                        <TableColumn fx:id="TCPaysVille" prefWidth="76.0" text="Pays et Ville" />
-                        <TableColumn fx:id="TCMobile" prefWidth="77.0" text="Mobile" />
-                        <TableColumn fx:id="TCEmailClient" prefWidth="118.0" text="Email" />
-                        <TableColumn fx:id="TCUsernameClient" prefWidth="67.0" text="Username" />
-                        <TableColumn fx:id="TCPasswordClient" prefWidth="92.0" text="Password" />
-                        <TableColumn fx:id="TCGenre" prefWidth="103.0" text="Genre" />
-                    </columns>
-                  </TableView>
-                  <TextField fx:id="TFRechercherCli" layoutX="679.0" layoutY="303.0" prefHeight="25.0" prefWidth="177.0" promptText="Rechercher" style="-fx-border-color: purple;" />
-                  <Button layoutX="874.0" layoutY="303.0" mnemonicParsing="false" onAction="#RechercherClient" prefHeight="25.0" prefWidth="110.0" stylesheets="@../Css/fullPackStyling.css" text="Rechercher" />
-                  <Button layoutX="95.0" layoutY="640.0" mnemonicParsing="false" onAction="#SupprimerClient" stylesheets="@../Css/fullPackStyling.css" text="Supprimer" />
-                  <Pane layoutX="-2.0" prefHeight="119.0" prefWidth="1030.0" style="-fx-background-color: DarkSlateBlue; -fx-border-color: PURPLE;">
-                     <children>
-                        <Label layoutX="29.0" layoutY="45.0" text="/Home/Client" textFill="WHITE" />
-                        <Label layoutX="27.0" layoutY="55.0" text="Clients" textFill="WHITE">
-                           <font>
-                              <Font size="28.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-               </children></Pane>
             <Pane fx:id="pnlLivreur" layoutY="-8.0" prefHeight="736.0" prefWidth="1015.0" style="-fx-background-color: WHITE;">
                <children>
                   <TableView fx:id="TVLivreur" layoutX="361.0" layoutY="417.0" prefHeight="295.0" prefWidth="640.0" stylesheets="@../Css/fullPackStyling.css">
                     <columns>
+                        <TableColumn fx:id="TCid" prefWidth="75.0" text="ID" />
                       <TableColumn fx:id="TCNomLivreur" prefWidth="88.0" text="Nom" />
                       <TableColumn fx:id="TCPrenomLivreur" prefWidth="104.0" text="Prenom" />
                         <TableColumn fx:id="TCEmailLivreur" prefWidth="199.0" text="Email" />
@@ -331,7 +345,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Button graphicTextGap="10.0" layoutX="158.0" layoutY="634.0" mnemonicParsing="false" onDragDetected="#GoToModifierLivreur" prefHeight="30.0" prefWidth="184.0" stylesheets="@../Css/fullPackStyling.css" text="Modifier Livreur" textFill="WHITE">
+                  <Button graphicTextGap="10.0" layoutX="158.0" layoutY="634.0" mnemonicParsing="false" onAction="#GoToModifierLivreur" prefHeight="30.0" prefWidth="184.0" stylesheets="@../Css/fullPackStyling.css" text="Modifier Livreur" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

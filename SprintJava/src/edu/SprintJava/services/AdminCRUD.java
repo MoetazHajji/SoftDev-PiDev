@@ -60,9 +60,10 @@ public class AdminCRUD {
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
                 Admin ad = new Admin();
+                ad.setId(rs.getInt("id"));
                 ad.setNom(rs.getString("nom"));
                 ad.setPrenom(rs.getString("prenom"));
-                ad.setCin(rs.getInt(4));
+                ad.setCin(rs.getInt("cin"));
                 ad.setUsername(rs.getString("username"));
                 ad.setEmail(rs.getString("email"));
                 ad.setPass(rs.getString("pass"));
@@ -75,11 +76,11 @@ public class AdminCRUD {
         return AdminList;
     }
 
-    public void modifierAdmin(String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a) {
+    public void modifierAdmin(int id_a,String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a) {
         try {
             String requete = "UPDATE Admin SET"
                     + " `nom`='" + nom_a + "' , `prenom`='" + prenom_a + "' , `cin`='" + cin_a + "' "
-                    + ",`username`='" + username_a + "',`email` ='" + email_a + "' ,`pass`='" + pass_a + "'  where `nom`='" + nom_a + "' ";
+                    + ",`username`='" + username_a + "',`email` ='" + email_a + "' ,`pass`='" + pass_a + "'  where `id`='" + id_a + "' ";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");
@@ -241,6 +242,23 @@ public class AdminCRUD {
         }
         return ad;
     }
-    
+      public List<Admin> getAll() {
+        List<Admin> list = new ArrayList<>();
+       
+        try {
+            String req = "Select (nom,prenom,cin,username,email,pass) from admin";
+            Statement st = mc.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                Admin R = new Admin(rs.getString("nom"),rs.getString("prenom"),rs.getInt("cin"),rs.getString("username"),rs.getString("email"),rs.getString("pass"));
+                list.add(R);
+            }
+                System.out.println("Admin List");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+       
+    }
    
 }

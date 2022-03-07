@@ -21,6 +21,87 @@ public class Admin {
     private String email;
     private String pass ;
     private String role;
+    private static int idd;
+    private static String nomm;
+    private static String prenomm;
+    private static int cinn;
+    private static String avatarr;
+    private static String usernamee;
+    private static String emaill;
+    private static String passs ;
+    private static String rolee;
+
+    public static void setIdd(int idd) {
+        Admin.idd = idd;
+    }
+
+    public static int getIdd() {
+        return idd;
+    }
+
+    public static String getNomm() {
+        return nomm;
+    }
+
+    public static void setNomm(String nomm) {
+        Admin.nomm = nomm;
+    }
+
+    public static String getPrenomm() {
+        return prenomm;
+    }
+
+    public static void setPrenomm(String prenomm) {
+        Admin.prenomm = prenomm;
+    }
+
+    public static int getCinn() {
+        return cinn;
+    }
+
+    public static void setCinn(int cinn) {
+        Admin.cinn = cinn;
+    }
+
+    public static String getAvatarr() {
+        return avatarr;
+    }
+
+    public static void setAvatarr(String avatarr) {
+        Admin.avatarr = avatarr;
+    }
+
+    public static String getUsernamee() {
+        return usernamee;
+    }
+
+    public static void setUsernamee(String usernamee) {
+        Admin.usernamee = usernamee;
+    }
+
+    public static String getEmaill() {
+        return emaill;
+    }
+
+    public static void setEmaill(String emaill) {
+        Admin.emaill = emaill;
+    }
+
+    public static String getPasss() {
+        return passs;
+    }
+
+    public static void setPasss(String passs) {
+        Admin.passs = passs;
+    }
+
+    public static String getRolee() {
+        return rolee;
+    }
+
+    public static void setRolee(String rolee) {
+        Admin.rolee = rolee;
+    }
 
     public Admin(String nom, String prenom,int cin, String username,String email,String pass,String avatar) {
         this.avatar = avatar;
@@ -42,6 +123,16 @@ public class Admin {
         this.pass = pass;
         this.role = role;
     }
+
+    public Admin(String nom, String prenom, int cin, String username, String email, String pass) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.username = username;
+        this.email = email;
+        this.pass = pass;
+    }
+    
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;

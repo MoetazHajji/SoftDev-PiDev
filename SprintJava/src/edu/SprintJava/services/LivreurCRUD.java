@@ -47,6 +47,7 @@ public class LivreurCRUD {
             ResultSet rs = st.executeQuery(requete);
             while(rs.next()){
                 Livreur li =new Livreur();
+                li.setId(rs.getInt("id"));
                 li.setNom(rs.getString("nom"));
                 li.setPrenom(rs.getString("prenom"));
                 li.setEmail(rs.getString("email"));
@@ -60,10 +61,10 @@ public class LivreurCRUD {
         return LivreurList;
     }
     
-    public void modifierLivreur(String nom_l,String prenom_l,String email_l,String username_l,String password_l){
+    public void modifierLivreur(int id_l ,String nom_l,String prenom_l,String email_l,String username_l,String password_l){
         try {
             String requete="UPDATE livreur SET `nom`='"+nom_l+"' , `prenom`='"+prenom_l+"'  "
-                    + ", `prenom`='"+email_l+"' , `prenom`='"+username_l+"' , `prenom`='"+password_l+"'  where `nom`='"+nom_l+"' ";
+                    + ", `prenom`='"+email_l+"' , `prenom`='"+username_l+"' , `prenom`='"+password_l+"'  where `id`='"+id_l+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");

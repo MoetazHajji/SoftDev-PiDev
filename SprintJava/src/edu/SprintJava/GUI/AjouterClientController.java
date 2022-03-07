@@ -83,9 +83,9 @@ public class AjouterClientController implements Initializable {
         else if(!cs.Mobile(TFMobile.getText())){
             JOptionPane.showMessageDialog(null,"Mobile incorrect");
         }
-        else if(!cs.mailFormat(dateD.toString())){
-            JOptionPane.showMessageDialog(null,"Email incorrect");
-        }
+//        else if(!cs.mailFormat(dateD.toString())){
+//            JOptionPane.showMessageDialog(null,"Email incorrect");
+//        }
         else if(!cs.testNomPrenom(TFUsername.getText())){
            JOptionPane.showMessageDialog(null,"Username incorrect");
        }
@@ -97,7 +97,7 @@ public class AjouterClientController implements Initializable {
                     , TFEmail.getText(), TFUsername.getText(), TFPassword.getText(), TFGenre.getText());
             clc.ajouterClient(cl);
             User_service us = new User_service();
-            us.ajouterUser(new User(TFUsername.getText(),TFPassword.getText(),"Admin"));
+            us.ajouterUser(new User(TFUsername.getText(),TFPassword.getText(),"Client"));
             Notification.main("Client !", TFNom.getText()+" Ajouté avec succé :) ");
             FXMLLoader loader= new FXMLLoader(getClass().getResource("LoginClient.fxml"));
             Parent root = loader.load();
