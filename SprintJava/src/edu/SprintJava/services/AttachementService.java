@@ -76,7 +76,7 @@ public class AttachementService {
       public Attachement findByPath(String Path) {
         Attachement a = null;
         try {
-            String req = "select * from Attachement where Path=? ";
+            String req = "select path from Attachement where path=? ";
             ste = conn.prepareStatement(req);
             ste.setString(1, Path);
             ResultSet rs = ste.executeQuery();

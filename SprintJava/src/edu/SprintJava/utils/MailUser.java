@@ -5,71 +5,77 @@
  */
 package edu.SprintJava.utils;
 
-import edu.SprintJava.services.AdminCRUD;
+import com.sun.mail.util.MailSSLSocketFactory;
+import edu.SprintJava.entities.MailServerInfo;
+import edu.SprintJava.services.User_service;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  *
  * @author moete
  */
 public class MailUser {
-    public static void senMail(String id_user , String body) {
-        try {
-            System.out.println("Preparing to send Mail :");
-            Properties propertie = new Properties();
-            
-            String myAccountEmail ="SofDev01@gmail.com";
-            String password="Sofdev123";
-            
-            propertie.put("com.hof.email.starttime", "20170519094544");
-            propertie.put("mail.smtp.auth", "true");
-            propertie.put("mail.smtp.connectiontimeout", "60000");
-            propertie.put("mail.smtp.host", "smtp.gmail.com");
-            propertie.put("mail.smtp.port", "25");
-            propertie.put("mail.smtp.trust", "*");
-            propertie.put("mail.smtp.ssl.trust", "true");
-            propertie.put("mail.smtp.timeout", "60000");
-            propertie.put("mail.smtp.protocol", "smtp");
-            
-            
-            Session session = Session.getInstance(propertie,new Authenticator(){
-                protected PasswordAuthentication getPasswordAuthentication(){
-                    return new PasswordAuthentication(myAccountEmail, password);
-                }
-            });
-            
-            Message message=prepareMessage(session,myAccountEmail,id_user,body);
-            Transport.send(message);
-            System.out.println("Message send successfully");
-        } catch (MessagingException ex) {
-            Logger.getLogger(MailUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+      
+       public static void sendMail(String recepient) throws Exception{
+        System.out.println("Preparing to send:");
+        Properties properties = new Properties();
+        
+        
+       
+        
+        properties.put("com.hof.email.starttime","20170519094544");
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.connectiontimeout","60000");
+        properties.put("mail.smtp.host","smtp.gmail.com");
+        properties.put("mail.smtp.port","25");
+        properties.put("mail.smtp.ssl.trust","*");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.timeout","60000");
+        properties.put("mail.transport.protocol","smtp");
+        
+         String myAccountEmail ="moetezh20@gmail.com";
+         String password ="Taztaz07";
+        
+        Session session = Session.getInstance(properties, new Authenticator(){
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
+        
+        Message message = prepareMessage(session,myAccountEmail,recepient);
+        
+        Transport.send(message);
+        System.out.println("message send successfully");
     }
     
-    private static Message prepareMessage(Session session,String myAccountEmail,String recepient,String Body){
+    
+    private static Message prepareMessage(Session session, String myAccountEmail, String recepient){
         try {
-            AdminCRUD adc = new AdminCRUD();
+            User_service Act = new User_service();
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("Information de compte ");
-            message.setText(Body);
-            
+            message.setSubject("La listes des User");
+            message.setText("hey There , \n Look my email");
+            //message.setText(Act.getListActivite2().toString());
             return message;
         } catch (MessagingException ex) {
-            Logger.getLogger(MailUser.class.getName()).log(Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MailUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         return null;
     }
+
 }

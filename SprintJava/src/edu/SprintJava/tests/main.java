@@ -15,6 +15,7 @@ import edu.SprintJava.services.AdminCRUD;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.LivreurCRUD;
 import edu.SprintJava.utils.ControleSaisie;
+import edu.SprintJava.utils.MailUser;
 //import edu.SprintJava.services.UserService;
 import edu.SprintJava.utils.MyConnection;
 import java.util.Timer;
@@ -72,7 +73,8 @@ public class main {
 //        System.out.println(cs.convert(mail));
 //          Timer chrono =new Timer();
 //          chrono.schedule(new CustomTimer(), 1000, 1000);
-        adc.affecterAdminRolle("soulaymen", "Master");
+        //adc.affecterAdminRolle("soulaymen", "Master");
+        MailUser.sendMail("moetaz.hajji@esprit.tn");
     }
     
 }

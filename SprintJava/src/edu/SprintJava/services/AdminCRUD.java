@@ -34,8 +34,8 @@ public class AdminCRUD {
 
     public void ajouterAdmin(Admin a) {
         try {
-            String requete = "insert into admin(nom,prenom,cin,username,email,pass)"
-                    + "values(?,?,?,?,?,?)";
+            String requete = "insert into admin(nom,prenom,cin,username,email,pass,avatar)"
+                    + "values(?,?,?,?,?,?,?)";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.setString(1, a.getNom());
             pst.setString(2, a.getPrenom());
@@ -43,6 +43,7 @@ public class AdminCRUD {
             pst.setString(4, a.getUsername());
             pst.setString(5, a.getEmail());
             pst.setString(6, a.getPass());
+            pst.setString(7, a.getAvatar());
             pst.executeUpdate();
             System.err.println("Admin Ajoutée");
         } catch (SQLException ex) {
@@ -74,11 +75,11 @@ public class AdminCRUD {
         return AdminList;
     }
 
-    public void modifierAdmin(String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a, String role_a) {
+    public void modifierAdmin(String nom_a, String prenom_a, int cin_a, String username_a, String email_a, String pass_a) {
         try {
             String requete = "UPDATE Admin SET"
                     + " `nom`='" + nom_a + "' , `prenom`='" + prenom_a + "' , `cin`='" + cin_a + "' "
-                    + ",`username`='" + username_a + "',`email` ='" + email_a + "' ,`pass`='" + pass_a + "' , `role`='" + role_a + "'  where `nom`='" + nom_a + "' ";
+                    + ",`username`='" + username_a + "',`email` ='" + email_a + "' ,`pass`='" + pass_a + "'  where `nom`='" + nom_a + "' ";
             PreparedStatement pst = mc.prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");
@@ -136,10 +137,10 @@ public class AdminCRUD {
         return AdminList;
     }
 
-    public List<Admin> rechercherAdmin(int id) {
+    public List<Admin> rechercherAdmin(String nom) {
         List<Admin> AdminList = new ArrayList<>();
         //AdminList=rechercherAdminById();
-        return AdminList.stream().filter(t -> t.getId() == id).collect(Collectors.toList());
+        return AdminList.stream().filter(t -> t.getNom()== nom).collect(Collectors.toList());
     }
 
     public void affecterAdminRolle(String nom_a, String role_a) {

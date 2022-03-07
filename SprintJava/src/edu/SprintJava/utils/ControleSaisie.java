@@ -5,14 +5,31 @@
  */
 package edu.SprintJava.utils;
 
+import com.jfoenix.controls.JFXButton;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -54,6 +71,12 @@ public class ControleSaisie {
             return true;
         }
         return false;
+    }
+    public static boolean validateEmailAddress(String emailID) {
+        String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(emailID).matches();
     }
     
     //******************************TEST FORMAT EMAIL**************************************************//
@@ -103,7 +126,36 @@ public class ControleSaisie {
 		return false;
 	}
         
-        
+        public static final String ICON_IMAGE_LOC = "/img/logo.png";
+    public static final String MAIL_CONTENT_LOC = "/resources/mail_content.html";
+    private static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+
+    public static void setStageIcon(Stage stage) {
+        stage.getIcons().add(new Image(ICON_IMAGE_LOC));
+    }
+
+    public static String formatDateTimeString(Date date) {
+        return DATE_TIME_FORMAT.format(date);
+    }
+
+    public static String formatDateTimeString(Long time) {
+        return DATE_TIME_FORMAT.format(new Date(time));
+    }
+
+    public static String getDateString(Date date) {
+        return DATE_FORMAT.format(date);
+    }
+
+
+    public static void openFileWithDesktop(File file) {
+        try {
+            Desktop desktop = Desktop.getDesktop();
+            desktop.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(ControleSaisie.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
         
     
 }

@@ -6,12 +6,15 @@
 package edu.SprintJava.GUI;
 
 import edu.SprintJava.entities.Admin;
+import edu.SprintJava.entities.Attachement;
 import edu.SprintJava.entities.User;
 import edu.SprintJava.services.AdminCRUD;
+import edu.SprintJava.services.AttachementService;
 import edu.SprintJava.services.User_service;
 import edu.SprintJava.utils.ControleSaisie;
 import edu.SprintJava.utils.Notification;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,8 +28,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javafx.scene.image.Image;
 
 /**
  * FXML Controller class
@@ -46,6 +52,10 @@ public class AjouterAdminController implements Initializable {
     private javafx.scene.control.TextField TFlogin;
     @FXML
     private javafx.scene.control.TextField TFpassword;
+    @FXML
+    private javafx.scene.control.TextField TFAvatar;
+    @FXML
+    private ImageView imgAvatar;
     
     
     /**
@@ -53,7 +63,14 @@ public class AjouterAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        AdminCRUD ad =new AdminCRUD();
+        AdminCRUD adc =new AdminCRUD();
+//        Admin ad=new Admin();
+//        AttachementService as = new AttachementService();
+//        Attachement a = as.findById(ad.getAvatar());
+//        //System.out.println((Session.getUser().getAvatar()));
+//        File file = new File(a.getPath());
+//        javafx.scene.image.Image image = new javafx.scene.image.Image(file.toURI().toString());
+//        imgAvatar.setImage(image);
         
     }    
 
@@ -81,10 +98,11 @@ public class AjouterAdminController implements Initializable {
         }
         
         else{
-            Admin ad = new Admin(TFnom.getText(), TFprenom.getText(),  Integer.parseInt(TFCIN.getText()), TFlogin.getText(), TFemail.getText(), TFpassword.getText());
+            Admin ad = new Admin(TFnom.getText(), TFprenom.getText(),  Integer.parseInt(TFCIN.getText()), TFlogin.getText()
+                    , TFemail.getText(), TFpassword.getText(),TFAvatar.getText());
             adc.ajouterAdmin(ad);
             User_service us = new User_service();
-            us.ajouterUser(new User(TFlogin.getText(),TFpassword.getText(),"Admin"));
+            us.ajouterUser(new User(TFlogin.getText(),TFpassword.getText(),"Admin",TFAvatar.getText()));
             JOptionPane.showMessageDialog(null,"Admin ajouté");
             Notification.main("Admin !!", "New Admin "+TFlogin.getText()+"added Succefuly ");
             FXMLLoader loader= new FXMLLoader(getClass().getResource("HomeAdminPannel.fxml"));
@@ -94,7 +112,6 @@ public class AjouterAdminController implements Initializable {
         
     }
 
-    @FXML
     private void BackToMainWindow(ActionEvent event) {
         try {
             Parent root=FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -118,6 +135,22 @@ public class AjouterAdminController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    int idA,idC; 
+    @FXML
+    private void upload(ActionEvent event) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        Attachement a1 = new Attachement();
+        AttachementService as = new AttachementService();
+        a1.setName("");
+        a1.setPath(filename);
+       idA =  as.ajouterAttachement(a1);
+       Image image = new Image(f.toURI().toString());
+       imgAvatar.setImage(image);
+       TFAvatar.setText(filename);
     }
     
 }

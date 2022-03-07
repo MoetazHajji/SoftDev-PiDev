@@ -70,7 +70,7 @@
                      </children>
                   </Pane>
                   <PasswordField fx:id="TFPassword" prefHeight="59.0" prefWidth="248.0" promptText="*******" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
-                  <Pane prefHeight="59.0" prefWidth="69.0">
+                  <Pane prefHeight="59.0" prefWidth="69.0" style="-fx-border-width: 0 0 0 2; -fx-border-color: purple;">
                      <children>
                         <FontAwesomeIconView fill="PURPLE" glyphName="EYE" layoutX="17.0" layoutY="42.0" size="35" />
                      </children>

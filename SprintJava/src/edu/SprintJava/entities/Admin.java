@@ -16,13 +16,14 @@ public class Admin {
     private String nom;
     private String prenom;
     private int cin;
+    private String avatar;
     private String username;
     private String email;
     private String pass ;
     private String role;
 
-    public Admin(String nom, String prenom,int cin, String username,String email,String pass) {
-      
+    public Admin(String nom, String prenom,int cin, String username,String email,String pass,String avatar) {
+        this.avatar = avatar;
         this.nom = nom;
         this.prenom = prenom;
         this.cin=cin;
@@ -40,6 +41,14 @@ public class Admin {
         this.email = email;
         this.pass = pass;
         this.role = role;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
     }
     
 

@@ -26,7 +26,7 @@ public class User_service {
     private Connection c = MyConnection.getInstance().getCnx();
     private Statement ste;
     public void ajouterUser(User A) {
-        String requete = "insert into user (username,password,role) values('" + A.getUsername()+ "','" + A.getPass()+ "','" + A.getRole()+ "')";
+        String requete = "insert into user (username,password,role,avatar) values('" + A.getUsername()+ "','" + A.getPass()+ "','" + A.getRole()+ "' , '"+A.getAvatar()+"' )";
         try {
             ste = c.createStatement();
             ste.executeUpdate(requete);
@@ -46,7 +46,7 @@ public class User_service {
 
             while (rs.next()) {
 
-                User us = new User(rs.getShort("id"),rs.getString("username"),rs.getString("Password"), rs.getString("role"));
+                User us = new User(rs.getInt("id"),rs.getString("username"),rs.getString("Password"), rs.getString("role"));
                 return us;
 
             }
@@ -135,4 +135,5 @@ public class User_service {
         }
         return default_return;
     }
+   
 }

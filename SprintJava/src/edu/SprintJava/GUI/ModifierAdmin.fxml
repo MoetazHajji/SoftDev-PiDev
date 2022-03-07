@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.ModifierAdminController">
+   <children>
+      <AnchorPane layoutX="-2.0" prefHeight="600.0" prefWidth="233.0" style="-fx-background-color: purple;" />
+      <Button layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#ReturnToClientPannel" stylesheets="@../Css/fullPackStyling.css">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="20" />
+         </graphic>
+      </Button>
+      <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="54.0" layoutY="170.0" size="40" />
+      <Label layoutX="102.0" layoutY="136.0" text="CULTUN" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TFPrenom" layoutX="831.0" layoutY="147.0" prefHeight="25.0" prefWidth="221.0" promptText="Last name" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+         <styleClass>
+            <String fx:value="transparent" />
+            <String fx:value="border" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="TFEmail" layoutX="831.0" layoutY="271.0" prefHeight="25.0" prefWidth="221.0" promptText="Email" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+         <styleClass>
+            <String fx:value="transparent" />
+            <String fx:value="border" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="TFUsername" layoutX="395.0" layoutY="401.0" prefHeight="25.0" prefWidth="221.0" promptText="Username" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+         <styleClass>
+            <String fx:value="border" />
+            <String fx:value="transparent" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="TFNom" layoutX="395.0" layoutY="147.0" prefHeight="25.0" prefWidth="221.0" promptText="First name" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+         <styleClass>
+            <String fx:value="border" />
+            <String fx:value="transparent" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="TFCIN" layoutX="395.0" layoutY="271.0" prefHeight="25.0" prefWidth="221.0" promptText="Genre" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+         <styleClass>
+            <String fx:value="transparent" />
+            <String fx:value="border" />
+         </styleClass>
+      </TextField>
+      <Button layoutX="931.0" layoutY="522.0" mnemonicParsing="false" onAction="#ModifierAdmin" prefHeight="40.0" prefWidth="121.0" stylesheets="@../Css/fullPackStyling.css" text="Validate" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Text fill="PURPLE" layoutX="260.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic details :" textAlignment="CENTER" wrappingWidth="252.05078125">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Text>
+      <Label layoutX="278.0" layoutY="151.0" text="First name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="267.0" layoutY="276.0" prefHeight="20.0" prefWidth="44.0" text="CIN">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="278.0" layoutY="406.0" text="Username">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="747.0" layoutY="151.0" text="Last name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="747.0" layoutY="276.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="747.0" layoutY="405.0" text="Password">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="TFPassword" layoutX="831.0" layoutY="401.0" prefHeight="25.0" prefWidth="221.0" promptText="Password" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+         <styleClass>
+            <String fx:value="border" />
+            <String fx:value="transparent" />
+         </styleClass>
+      </PasswordField>
+      <Line endX="740.0" layoutX="352.0" layoutY="111.0" startX="-100.0" stroke="PURPLE" />
+      <ComboBox fx:id="CBROLE" layoutX="582.0" layoutY="485.0" prefHeight="29.0" prefWidth="174.0" />
+   </children>
+</AnchorPane>

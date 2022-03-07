@@ -7,10 +7,12 @@ package edu.SprintJava.GUI;
 
 import edu.SprintJava.entities.User;
 import edu.SprintJava.entities.Admin;
+import edu.SprintJava.entities.Attachement;
 import edu.SprintJava.entities.Client;
 import edu.SprintJava.entities.Livreur;
 import edu.SprintJava.entities.Session;
 import edu.SprintJava.services.AdminCRUD;
+import edu.SprintJava.services.AttachementService;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.LivreurCRUD;
 import edu.SprintJava.services.User_service;
@@ -18,11 +20,14 @@ import edu.SprintJava.utils.ControleSaisie;
 import edu.SprintJava.utils.Notification;
 import java.awt.AWTException;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -46,6 +51,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -139,22 +146,6 @@ public class HomeAdminPannelController implements Initializable {
     @FXML
     private PasswordField TFPasswordLivreur;
     @FXML
-    private TextField TFUpdAdNom;
-    @FXML
-    private TextField TFUpdAdPrenom;
-    @FXML
-    private TextField TFUpdAdEmail;
-    @FXML
-    private TextField TFUpdAdPassword;
-    @FXML
-    private TextField TFUpdAdUsername;
-    @FXML
-    private TextField TFUpdAdCIN;
-    @FXML
-    private TextField TFUpdAdRole;
-    @FXML
-    private Pane pnlModifyAdmin;
-    @FXML
     private TextField TFRechercheAd;
     @FXML
     private TextField TFRechercheLiv;
@@ -174,6 +165,8 @@ public class HomeAdminPannelController implements Initializable {
     private Button btnLivreurList1;
     @FXML
     private Label name;
+    @FXML
+    private ImageView ImgAvatar;
     /*
      * Initializes the controller class.
      */
@@ -181,12 +174,20 @@ public class HomeAdminPannelController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         pnlWelcome.toFront();
         User_service us = new User_service();
+        User usersession = us.findById(Session.getUser().getId());
+        
         User usr = new User();
-            User usersession = us.findById(Session.getUser().getId());
+        AttachementService as = new AttachementService();
+        Attachement a = as.findById(Session.getUser().getId());
+        //System.out.println((Session.getUser().getAvatar()));
+        File file = new File(a.getPath());
+        Image image = new Image(file.toURI().toString());
+            
         
        //System.out.println(usersession);
         //Admin ad =adc.getAdmin(usersession.getMail());
         name.setText(usersession.getUsername());
+        ImgAvatar.setImage(image);
         //************ Affecter Role**************/
         RoleBox.setItems(Roles);
         RoleBox.setValue("Master");
@@ -376,36 +377,31 @@ public class HomeAdminPannelController implements Initializable {
 
     
     @FXML
-    private void AfficherAdminModify(ActionEvent event) {
+    private void AfficherAdminModify(ActionEvent event) throws IOException {
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Modification Admin");
         alert.setHeaderText("Modifier"+TVListeAdmin.getSelectionModel().getSelectedItem().getId());
         alert.setContentText("Vous voulez vraiment modifier l'admin " +TVListeAdmin.getSelectionModel().getSelectedItem().getNom() + " ?");
         Optional<ButtonType> result =alert.showAndWait();
         if(result.get()==ButtonType.OK){
-            pnlModifyAdmin.toFront();
+            Parent root=FXMLLoader.load(getClass().getResource("ModifierAdmin.fxml"));
+            Scene scene=new Scene(root);
+            Stage stage=(Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
         }
         if(result.get()==ButtonType.CANCEL){
             alert.close();
         }
     }
         
-    
-
-    @FXML
-    private void ModifierAdmin(ActionEvent event) throws AWTException {
-            AdminCRUD adc=new AdminCRUD();
-            adc.modifierAdmin(TFUpdAdNom.getText(), TFUpdAdPrenom.getText(), Integer.parseInt(TFUpdAdCIN.getText()), TFUpdAdUsername.getText()
-                , TFUpdAdEmail.getText(), TFUpdAdPassword.getText(), TFUpdAdRole.getText());
-            Notification.main("Admin !", "Admin modifié avec succé !!");  
-            
-    }
 
     @FXML
     private void RechercherAdmin(ActionEvent event) {
         AdminCRUD adc = new AdminCRUD();
-         ObservableList<Admin> list = FXCollections.observableArrayList();
-         list=adc.rechercherAdminById("nom", TFRechercheAd.getText());
+         List<Admin> list = new ArrayList<>();
+         list=adc.rechercherAdmin( TFRechercheAd.getText());
          TCNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
          TCPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
          TCCIN.setCellValueFactory(new PropertyValueFactory<>("cin"));
@@ -413,20 +409,22 @@ public class HomeAdminPannelController implements Initializable {
          TCUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
          TCPassword.setCellValueFactory(new PropertyValueFactory<>("pass"));
          TCRole.setCellValueFactory(new PropertyValueFactory<>("role"));
-         TVListeAdmin.setItems(list);
+         TVListeAdmin.setItems((ObservableList<Admin>) list);
+
     }
 
     @FXML
     private void RechercherLivreur(ActionEvent event) {
-        LivreurCRUD lic = new LivreurCRUD();
-         ObservableList<Livreur> list = FXCollections.observableArrayList();
-         list=lic.rechercherLivreurById("nom", TFNomLivreur.getText());
-         TCNomLivreur.setCellValueFactory(new PropertyValueFactory<>("nom"));
-         TCPrenomLivreur.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-         TCEmailLivreur.setCellValueFactory(new PropertyValueFactory<>("email"));
-         TCUsernameLivreur.setCellValueFactory(new PropertyValueFactory<>("username"));
-         TCPasswordLivreur.setCellValueFactory(new PropertyValueFactory<>("password"));
-         TVLivreur.setItems(list);
+//        LivreurCRUD lic = new LivreurCRUD();
+//         ObservableList<Livreur> list = FXCollections.observableArrayList();
+//         list=lic.rechercherLivreurById("nom", TFNomLivreur.getText());
+//         TCNomLivreur.setCellValueFactory(new PropertyValueFactory<>("nom"));
+//         TCPrenomLivreur.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+//         TCEmailLivreur.setCellValueFactory(new PropertyValueFactory<>("email"));
+//         TCUsernameLivreur.setCellValueFactory(new PropertyValueFactory<>("username"));
+//         TCPasswordLivreur.setCellValueFactory(new PropertyValueFactory<>("password"));
+//         TVLivreur.setItems(list);
+
     }
 
     @FXML
@@ -544,6 +542,7 @@ public class HomeAdminPannelController implements Initializable {
             TFNomLivreur.getScene().setRoot(root);
         }
     }
+
 
 
 }

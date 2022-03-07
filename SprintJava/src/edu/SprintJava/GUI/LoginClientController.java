@@ -48,8 +48,6 @@ public class LoginClientController implements Initializable {
     private TextField TFUsername;
     @FXML
     private PasswordField TFPassword;
-    @FXML
-    private Label LBErrorMessage;
     
 
     /**
@@ -154,6 +152,7 @@ public class LoginClientController implements Initializable {
     
     @FXML
     private void CloseLoginClient(ActionEvent event) {
+        ((Stage) TFUsername.getScene().getWindow()).close();
     }
 
 }
