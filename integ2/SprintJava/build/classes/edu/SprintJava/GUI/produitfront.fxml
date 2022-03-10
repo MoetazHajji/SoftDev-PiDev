@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.ProduitfrontController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1122.0">
+         <stylesheets>
+             
+              <URL value="@produitsFXML.css" />
+          </stylesheets>
+          
+          <children>
+            <JFXHamburger fx:id="hamburger" layoutX="7.0" layoutY="14.0" />
+            <AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="711.0" prefWidth="1173.0" style="-fx-background-color: WHITE;">
+                <stylesheets>
+                    <URL value="@produitsFXML.css" />
+                </stylesheets>
+                <children>
+                  <JFXListView fx:id="ListView_Produits" layoutX="260.0" layoutY="100.0" prefHeight="600.0" prefWidth="703.0" />
+                  <JFXHamburger fx:id="hamburger1" layoutX="7.0" layoutY="14.0" />
+                  <JFXListView fx:id="ListView_Produits1" layoutX="962.0" layoutY="59.0" onMouseEntered="#showpanier2" onMouseExited="#hidepanier2" prefHeight="641.0" prefWidth="210.0" />
+                  <HBox alignment="BOTTOM_LEFT" layoutX="949.0" layoutY="-3.0" prefHeight="57.0" prefWidth="224.0">
+                     <children>
+                        <ImageView fx:id="panier" fitHeight="47.0" fitWidth="59.0" onMouseEntered="#paniershow" onMouseExited="#panierhide" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/126083.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="nbrnotif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round-lbl" text="0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Line endX="934.0" endY="2.0" layoutX="29.0" layoutY="98.0" startX="231.0" startY="2.0" stroke="PURPLE" style="-fx-cursor: PURPLE;" />
+            
+               </children>
+            </AnchorPane>
+            <VBox layoutX="1.0" prefHeight="694.0" prefWidth="258.0" style="-fx-background-color: PURPLE;">
+               <children>
+                  <Pane prefHeight="127.0" prefWidth="247.0" style="-fx-background-color: PURPLE;">
+                     <children>
+                        <TextField fx:id="rechercher" layoutX="44.0" layoutY="51.0" onKeyReleased="#search" promptText="rechercher" />
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="210.0" layoutY="68.0" size="15" />
+                     </children></Pane>
+                  <JFXButton fx:id="Ajouter" onAction="#ButtonAjouterProduit" prefHeight="139.0" prefWidth="260.0" text="consulter mon panier" textFill="#fff3f3">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="Commande" onAction="#ButtonCommande" prefHeight="211.0" prefWidth="265.0" text="profile" textFill="#f5dede">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+             
+         </children>
+         
+      </AnchorPane>
+   </children>
+</AnchorPane>

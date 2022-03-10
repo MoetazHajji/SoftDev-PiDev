@@ -7,6 +7,7 @@ package edu.SprintJava.services;
 
 import edu.SprintJava.entities.Admin;
 import edu.SprintJava.entities.Client;
+import edu.SprintJava.enumm.Genre;
 import edu.SprintJava.utils.MyConnection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -39,7 +40,7 @@ public class ClientCRUD {
             pst.setString(6,cl.getEmail());
             pst.setString(7,cl.getUsername());
             pst.setString(8,cl.getPassword());
-            pst.setString(9,cl.getGenre());
+            pst.setString(9,cl.getGenre().toString());
             pst.executeUpdate();
             System.err.println("Client Ajoutée");
         } catch (SQLException ex) {
@@ -64,7 +65,9 @@ public class ClientCRUD {
                 cl.setMobile(rs.getInt(6));
                 cl.setEmail(rs.getString("email"));
                 cl.setPassword(rs.getString("password"));
-                cl.setGenre(rs.getString("genre"));
+                String TypeStr = rs.getString("genre");
+                Genre TypeEnum = Genre.valueOf(TypeStr);
+                cl.setGenre(TypeEnum);
                 ClientList.add(cl);
             }
         } catch (SQLException ex) {
@@ -72,11 +75,11 @@ public class ClientCRUD {
         } 
         return ClientList;
     }
-    public void modifierClient(String nom_c,String prenom_c,Date date_naissance_c,String pays_ville_c,int mobile_c,String email_c,String username_c,String password_c,String genre_c){
+    public void modifierClient(String nom_c,String prenom_c,Date date_naissance_c,int mobile_c,String email_c,String username_c,String password_c){
         try {
             String requete="UPDATE client SET"
-                    + "`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"',`pays_ville`='"+pays_ville_c+"'"
-                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `username`='"+username_c+"', `password`='"+password_c+"',`genre`='"+genre_c+"' where `nom`='"+nom_c+"' ";
+                    + "`nom`='"+nom_c+"' , `prenom`='"+prenom_c+"' , `date_naissance`='"+date_naissance_c+"'"
+                    +  ", `mobile`='"+mobile_c+"' ,`email` ='"+email_c+"' , `username`='"+username_c+"', `password`='"+password_c+"' where `username`='"+username_c+"' ";
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.executeUpdate();
             System.err.println("Update Done !!");
@@ -112,7 +115,9 @@ public class ClientCRUD {
                 cl.setUsername(rs.getString("usercvname"));
                 cl.setEmail(rs.getString("email"));
                 cl.setPassword(rs.getString("password"));
-                cl.setGenre(rs.getString("genre"));
+                String TypeStr = rs.getString("genre");
+                Genre TypeEnum = Genre.valueOf(TypeStr);
+                cl.setGenre(TypeEnum);
 
                 ClientList.add(cl);
 

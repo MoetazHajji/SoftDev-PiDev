@@ -90,18 +90,6 @@ public class LoginClientController implements Initializable {
                 app_stage.show();
 
             } 
-//            else if (us.checkRole(TFUsername.getText()).equals("Owner") && attempt < 4) {
-//                Session.getFirstInstance(Session.getUser());
-//                int ide = Session.getUser().getId();
-//                System.out.println(ide);
-//                home_page_parent = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-//                Scene home_page_scene = new Scene(home_page_parent);
-//                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                app_stage.hide();
-//                app_stage.setScene(home_page_scene);
-//                app_stage.show();
-//
-//            }
             else if (attempt != 4) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText("Denied!" + attempt);

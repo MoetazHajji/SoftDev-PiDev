@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AfficherSponsController">
+    <children>
+        <TableView fx:id="tvSponsor" layoutX="-3.0" prefHeight="244.0" prefWidth="501.0" stylesheets="@../css/fullPackStyling.css">
+            <columns>
+                <TableColumn fx:id="tcNom_spons" prefWidth="75.0" text="Nom" />
+                <TableColumn fx:id="tcPrenom_spons" prefWidth="75.0" text="Prenom" />
+                <TableColumn fx:id="tcNum_spons" prefWidth="151.6666259765625" text="Numero de Telephone" />
+                <TableColumn fx:id="tcType_spons" prefWidth="75.3333740234375" text="Type" />
+                <TableColumn fx:id="tcId_event" prefWidth="124.66668701171875" text="Id de l'evenement" />
+            </columns>
+        </TableView>
+        <Button layoutX="498.0" layoutY="101.0" mnemonicParsing="false" onAction="#AjouterSponsor" prefHeight="29.0" prefWidth="159.0" stylesheets="@../css/fullPackStyling.css" text="Ajouter un sponsor" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+         </graphic></Button>
+        <Button layoutX="498.0" layoutY="186.0" mnemonicParsing="false" onAction="#ModifierSponsor" prefHeight="29.0" prefWidth="159.0" stylesheets="@../css/fullPackStyling.css" text="Modifier un sponsor" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="20" />
+         </graphic></Button>
+        <Button layoutX="501.0" layoutY="263.0" mnemonicParsing="false" onAction="#SupprimerSponsor" prefHeight="29.0" prefWidth="159.0" stylesheets="@../css/fullPackStyling.css" text="Supprimer un sponsor" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="REMOVE" size="20" />
+         </graphic></Button>
+      <Button layoutX="561.0" layoutY="351.0" mnemonicParsing="false" onAction="#Acceuil" style="-fx-background-color: WHITE;" stylesheets="@../css/fullPackStyling.css" textFill="RED">
+         <graphic>
+            <FontAwesomeIconView fill="PURPLE" glyphName="ARROW_LEFT" size="20" />
+         </graphic></Button>
+      <Button layoutX="501.0" layoutY="38.0" mnemonicParsing="false" onAction="#EnvoyerSms" prefHeight="29.0" prefWidth="159.0" stylesheets="@../css/fullPackStyling.css" text="Envoyer sms" textFill="WHITE" />
+      <FontAwesomeIconView fill="WHITE" glyphName="SEND" layoutX="512.0" layoutY="59.0" size="20" />
+      <TableView fx:id="TVEvent" layoutY="244.0" prefHeight="156.0" prefWidth="392.0" stylesheets="@../Css/fullPackStyling.css">
+        <columns>
+          <TableColumn fx:id="TCNomEvent" prefWidth="247.0" text="Nom d'evenement" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>

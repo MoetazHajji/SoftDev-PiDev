@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AffichercommandeController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="620.0" prefWidth="1678.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="620.0" prefWidth="1678.0">
+               <children>
+                  <TableView fx:id="tabcmd" layoutX="191.0" layoutY="122.0" prefHeight="500.0" prefWidth="1457.0" stylesheets="@../Css/fullPackStyling.css" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="122.0">
+                    <columns>
+                      <TableColumn fx:id="num" prefWidth="93.0" text="num" />
+                        <TableColumn fx:id="id_user" prefWidth="99.0" text="id_user" />
+                        <TableColumn fx:id="produitt" prefWidth="104.0" text="produit" />
+                      <TableColumn fx:id="nom" prefWidth="110.0" text="nom" />
+                        <TableColumn fx:id="adresse" prefWidth="107.0" text="adresse" />
+                        <TableColumn fx:id="tel" prefWidth="76.0" text="tel" />
+                        <TableColumn fx:id="etat" prefWidth="108.0" text="etat" />
+                        <TableColumn fx:id="date_commande" prefWidth="100.0" text="date_commande" />
+                        <TableColumn fx:id="total_prix" prefWidth="118.0" text="total_prix" />
+                    </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <VBox layoutX="-6.0" prefHeight="620.0" prefWidth="195.0" style="-fx-background-color: purple;">
+                     <children>
+                        <JFXButton fx:id="Accueil" onAction="#buttonaccuiel" prefHeight="264.0" prefWidth="195.0" text="Accueil" textFill="WHITE" />
+                        <JFXButton fx:id="Produits" onAction="#buttonProduit" prefHeight="299.0" prefWidth="199.0" text="Produits" textFill="WHITE" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <Label fx:id="lblStatus" layoutX="545.0" layoutY="23.0" prefHeight="60.0" prefWidth="388.0" text="Afficher Commande" textFill="PURPLE">
+                     <font>
+                        <Font name="Arial Bold Italic" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.PanieerrController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="711.0" prefWidth="1040.0" style="-fx-background-color: white;">
+               <children>
+                  <Pane fx:id="pane" layoutX="230.0" layoutY="106.0" prefHeight="313.0" prefWidth="813.0" style="-fx-background-radius: 10; -fx-background-color: white;">
+                     <children>
+                        <HBox layoutX="-1.0" prefHeight="63.0" prefWidth="174.0" spacing="10.0" style="-fx-background-color: PURPLE; -fx-background-radius: 10 0 0 0;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="produit" textAlignment="CENTER" wrappingWidth="84.330078125">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="525.0" prefHeight="60.0" prefWidth="283.0" spacing="10.0" style="-fx-background-color: PURPLE; -fx-background-radius: 0 10 0 0;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="total">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="305.0" prefHeight="60.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: PURPLE;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="prix">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="412.0" prefHeight="60.0" prefWidth="111.0" spacing="10.0" style="-fx-background-color: PURPLE;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="177.0" prefHeight="60.0" prefWidth="125.0" spacing="10.0" style="-fx-background-color: PURPLE;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="646.0" layoutY="529.0" prefHeight="133.0" prefWidth="301.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
+                     <children>
+                        <HBox prefHeight="63.0" prefWidth="301.0" style="-fx-background-radius: 10 10 0 0; -fx-background-color: PURPLE;">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="prix totale" wrappingWidth="113.322265625">
+                                 <font>
+                                    <Font name="Arial Black" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets left="90.0" top="15.0" />
+                           </padding>
+                        </HBox>
+                        <Separator layoutX="115.0" layoutY="65.0" orientation="VERTICAL" prefHeight="54.0" prefWidth="6.0" />
+                        <Text fx:id="prix_total" layoutX="28.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="61.662597655318677">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="valider" layoutX="121.0" layoutY="76.0" mnemonicParsing="false" onAction="#validationCommande" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: #ff5f5f; -fx-background-radius: 5;" text="valider la commande" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <VBox layoutX="1.0" prefHeight="711.0" prefWidth="229.0" style="-fx-background-color: PURPLE;">
+               <children>
+                  <Pane prefHeight="87.0" prefWidth="174.0" style="-fx-background-color: PURPLE;" />
+                  <JFXButton fx:id="Commande" onAction="#ButtonCommande" prefHeight="211.0" prefWidth="220.0" text="produit" textFill="#f5dede">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="Ajouter" onAction="#ButtonAjouterProduit" prefHeight="139.0" prefWidth="220.0" text="mon profile" textFill="#d0b7b7">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

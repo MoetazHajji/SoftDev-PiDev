@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.LoginController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="601.0" prefWidth="401.0" styleClass="left-side-background" stylesheets="@../Css/LoginClient.css">
+         <children>
+            <ImageView fitHeight="184.0" fitWidth="401.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="93.0" prefWidth="401.0" VBox.vgrow="ALWAYS" />
+            <ImageView fitHeight="236.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/business-icon-png-1938.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="139.0" prefWidth="401.0" />
+         </children>
+      </VBox>
+      <Button alignment="TOP_CENTER" layoutX="577.0" layoutY="215.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#CloseLoginClient" prefHeight="24.0" prefWidth="21.0" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <VBox layoutX="400.0" prefHeight="601.0" prefWidth="482.0">
+         <children>
+            <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="34.0" prefWidth="481.0">
+               <children>
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#CloseLoginAdmin" styleClass="transparent" stylesheets="@../Css/LoginClient.css">
+                     <graphic>
+                        <FontAwesomeIconView fill="RED" glyphName="REMOVE" size="25" styleClass="transparent" wrappingWidth="15.64285659790039" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Pane prefHeight="140.0" prefWidth="482.0" />
+            <HBox prefHeight="55.0" prefWidth="370.0" style="-fx-border-color: purple; -fx-border-width: 2;">
+               <children>
+                  <Pane prefHeight="100.0" prefWidth="59.0" style="-fx-border-color: purple; -fx-border-width: 0 2 0 0;">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <FontAwesomeIconView fill="PURPLE" glyphName="USER" layoutX="14.0" layoutY="38.0" size="35" wrappingWidth="40.00000137090683" />
+                     </children>
+                  </Pane>
+                  <TextField fx:id="TFUsername" prefHeight="56.0" prefWidth="340.0" promptText="Username" styleClass="transparent" stylesheets="@../Css/LoginClient.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets left="50.0" right="35.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="44.0" prefHeight="50.0" prefWidth="397.0" style="-fx-border-color: purple; -fx-border-width: 2;">
+               <children>
+                  <Pane prefHeight="50.0" prefWidth="61.0" style="-fx-border-color: purple; -fx-border-width: 0 2 0 0;" styleClass="right-side-border" stylesheets="@../Css/LoginClient.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <FontAwesomeIconView fill="PURPLE" glyphName="KEY" layoutX="3.0" layoutY="36.0" size="40" />
+                     </children>
+                  </Pane>
+                  <PasswordField fx:id="PFPassword" prefHeight="59.0" prefWidth="285.0" promptText="**********" stylesheets="@../Css/LoginClient.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="transparent" />
+                        <String fx:value="right-side-border" />
+                     </styleClass>
+                  </PasswordField>
+                  <Pane prefHeight="50.0" prefWidth="53.0" style="-fx-border-color: purple; -fx-border-width: 0  0 0 2;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <FontAwesomeIconView fill="PURPLE" glyphName="EYE" layoutX="7.0" layoutY="31.0" size="35" wrappingWidth="39.99999808520079" />
+                     </children>
+                  </Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="50.0" right="35.0" top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <Pane prefHeight="46.0" prefWidth="482.0">
+               <children>
+                  <Label fx:id="LBError" layoutX="67.0" layoutY="4.0" prefHeight="36.0" prefWidth="355.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <HBox prefHeight="75.0" prefWidth="482.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Login" prefHeight="41.0" prefWidth="380.0" stylesheets="@../Css/fullPackStyling.css" text="Login" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="50.0" top="25.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label graphicTextGap="10.0" prefHeight="28.0" prefWidth="477.0" text="Forget Password?" textFill="PURPLE">
+               <padding>
+                  <Insets left="240.0" right="100.0" />
+               </padding>
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

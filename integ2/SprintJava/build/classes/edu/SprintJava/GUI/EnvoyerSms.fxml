@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.EnvoyerSmsController">
+   <children>
+      <Label layoutX="91.0" layoutY="102.0" text="To :" />
+      <Label layoutX="91.0" layoutY="162.0" text="Message :" />
+      <TextField fx:id="fxTo" layoutX="200.0" layoutY="102.0" prefHeight="25.0" prefWidth="158.0" promptText="Numero" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <TextArea fx:id="fxMessage" layoutX="200.0" layoutY="162.0" prefHeight="77.0" prefWidth="200.0" promptText="Message" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <Button layoutX="249.0" layoutY="288.0" mnemonicParsing="false" onAction="#envoyersms" prefHeight="40.0" prefWidth="81.0" stylesheets="@../css/fullPackStyling.css" text="Envoyer" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="SEND" />
+         </graphic></Button>
+      <AnchorPane layoutX="-10.0" layoutY="-5.0" prefHeight="77.0" prefWidth="614.0" style="-fx-background-color: purple;">
+         <children>
+            <Label layoutX="184.0" layoutY="20.0" text="Envoyer un message" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fx:id="tfBack" fill="WHITE" glyphName="ARROW_LEFT" layoutX="27.0" layoutY="43.0" onMouseClicked="#GestionSponsor" size="20" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

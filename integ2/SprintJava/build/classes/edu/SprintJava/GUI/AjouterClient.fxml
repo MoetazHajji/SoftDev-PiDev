@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AjouterClientController">
+   <children>
+      <TextField fx:id="TFPrenom" layoutX="821.0" layoutY="137.0" prefHeight="25.0" prefWidth="221.0" promptText="Last name" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <TextField fx:id="TFMobile" layoutX="385.0" layoutY="294.0" prefHeight="25.0" prefWidth="221.0" promptText="Mobile" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <TextField fx:id="TFEmail" layoutX="821.0" layoutY="294.0" prefHeight="25.0" prefWidth="221.0" promptText="Email" style="-fx-border-width: 2; -fx-border-color: purple;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <TextField fx:id="TFUsername" layoutX="385.0" layoutY="391.0" prefHeight="25.0" prefWidth="221.0" promptText="Username" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <TextField fx:id="TFNom" layoutX="385.0" layoutY="137.0" prefHeight="25.0" prefWidth="221.0" promptText="First name" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <TextField fx:id="TFPaysVille" layoutX="821.0" layoutY="214.0" prefHeight="25.0" prefWidth="221.0" promptText="Pays &amp; Ville" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <TextField fx:id="TFGenre" layoutX="579.0" layoutY="475.0" prefHeight="25.0" prefWidth="221.0" promptText="Genre" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <Button layoutX="939.0" layoutY="529.0" mnemonicParsing="false" onAction="#AjouterClientt" prefHeight="40.0" prefWidth="112.0" stylesheets="@../Css/fullPackStyling.css" text="Validate" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font></Button>
+      <Line endX="61.0" endY="-484.0" layoutX="172.0" layoutY="489.0" startX="61.0" startY="144.0" />
+      <Line endX="740.0" layoutX="342.0" layoutY="101.0" startX="-100.0" stroke="PURPLE" />
+      <Text fill="PURPLE" layoutX="250.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic details :" textAlignment="CENTER" wrappingWidth="252.05078125">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Text>
+      <Label layoutX="268.0" layoutY="141.0" text="First name">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="256.0" layoutY="218.0" text="Date de naissance">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="268.0" layoutY="298.0" text="Mobile">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="268.0" layoutY="396.0" text="Username">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="737.0" layoutY="141.0" text="Last name">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="737.0" layoutY="218.0" text="Pays et ville">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="737.0" layoutY="298.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="737.0" layoutY="395.0" text="Password">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <PasswordField fx:id="TFPassword" layoutX="821.0" layoutY="391.0" prefHeight="25.0" prefWidth="221.0" promptText="Password" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <Label layoutX="454.0" layoutY="479.0" text="Genre">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <DatePicker fx:id="DateNaissance" layoutX="382.0" layoutY="214.0" prefHeight="25.0" prefWidth="221.0" promptText="DateNaissance" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../Css/LoginClient.css" />
+      <AnchorPane layoutY="-3.0" prefHeight="641.0" prefWidth="236.0" style="-fx-background-color: purple;">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ReturnToLogin" styleClass="transparent" stylesheets="@../Css/LoginClient.css">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="20" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="34.0" layoutY="150.0" size="40" />
+      <Label layoutX="82.0" layoutY="116.0" text="CULTUN" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

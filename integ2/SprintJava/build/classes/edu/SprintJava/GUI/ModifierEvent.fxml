@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.ModifierEventController">
+    
+     <children>
+      <Label layoutX="14.0" layoutY="203.0" prefHeight="17.0" prefWidth="81.0" text="Emplacement :" />
+      <Label layoutX="15.0" layoutY="106.0" text="Nom de l'évenement :" />
+      <Label layoutX="14.0" layoutY="144.0" text="Nombre de participants :" />
+      <Label layoutX="321.0" layoutY="108.0" text="Date debut : " />
+      <Label layoutX="320.0" layoutY="144.0" text="Date fin :" />
+      <TextField fx:id="tfemplacement" layoutX="151.0" layoutY="197.0" promptText="Emplacement" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <TextField fx:id="tfnom_event" layoutX="151.0" layoutY="102.0" promptText="Nom" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <TextField fx:id="tfnombre_participants" layoutX="151.0" layoutY="140.0" promptText="Nombre" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      
+      <Label layoutX="320.0" layoutY="180.0" text="Description : " />
+      <Separator layoutX="300.0" layoutY="85.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="14.0" />
+      <Label layoutX="14.0" layoutY="245.0" text="Theme :" />
+      <TextField fx:id="tfdescription" layoutX="408.0" layoutY="185.0" prefHeight="86.0" prefWidth="178.0" promptText="Description" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+     <Button layoutX="228.0" layoutY="323.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="45.0" prefWidth="132.0" stylesheets="@../css/fullPackStyling.css" text="Modifier" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="20" />
+         </graphic></Button>
+      <ChoiceBox fx:id="cbtype" layoutX="153.0" layoutY="239.0" prefWidth="150.0" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <DatePicker fx:id="dateDebut" layoutX="409.0" layoutY="102.0" onAction="#Effacer" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <DatePicker fx:id="dateFin" layoutX="409.0" layoutY="140.0" onAction="#EffacerF" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <AnchorPane layoutY="-11.0" prefHeight="86.0" prefWidth="600.0" style="-fx-background-color: purple;">
+         <children>
+            <Label layoutX="201.0" layoutY="26.0" text="Modifier evenement" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="-25.0" layoutY="29.0" mnemonicParsing="false" onAction="#GestionEvent" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: purple;">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="20" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label fx:id="Label_dd" layoutX="420.0" layoutY="108.0" text="Label" />
+      <Label fx:id="Label_df" layoutX="420.0" layoutY="146.0" text="Label" />
+   </children>
+
+    
+</AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="744.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="edu.SprintJava.GUI.ParticiperEventController">
+   <children>
+      <TableView fx:id="tvEvenement" layoutX="25.0" layoutY="81.0" prefHeight="200.0" prefWidth="620.0" stylesheets="@../css/fullPackStyling.css">
+        <columns>
+          <TableColumn fx:id="tcNom" prefWidth="65.66665649414062" text="Nom" />
+          <TableColumn fx:id="tcNbre_participants" prefWidth="142.66668701171875" text="Nombre de participants" />
+            <TableColumn fx:id="tcDate_deb" prefWidth="102.33331298828125" text="Date de debut" />
+            <TableColumn fx:id="tcDate_fin" prefWidth="71.6666259765625" text="Date de fin" />
+            <TableColumn fx:id="tcEmplacement" prefWidth="89.6666259765625" text="Emplacement" />
+            <TableColumn fx:id="tcDescription" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="tcTheme" prefWidth="75.0" text="Theme" />
+        </columns>
+      </TableView>
+      <Button layoutX="320.0" layoutY="316.0" mnemonicParsing="false" stylesheets="@../css/fullPackStyling.css" text="Participer" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AfficherTicController">
+   <children>
+      <TableView fx:id="tvTicket" prefHeight="256.0" prefWidth="424.0" style="-fx-border-color: purple;" stylesheets="@../css/fullPackStyling.css">
+        <columns>
+          <TableColumn fx:id="tcId_ticket" prefWidth="38.0" text="Id du ticket" />
+          <TableColumn fx:id="tcPack" prefWidth="79.0" text="Pack" />
+            <TableColumn fx:id="tcPrix" prefWidth="74.0" text="Prix" />
+            <TableColumn fx:id="tcId_event" prefWidth="140.0" text="Id de l'évenement" />
+            <TableColumn fx:id="tcId_client" prefWidth="164.0" text="Id du client" />
+        </columns>
+      </TableView>
+      <Button layoutX="439.0" layoutY="277.0" mnemonicParsing="false" onAction="#supprimerTicket" prefHeight="25.0" prefWidth="148.0" stylesheets="@../css/fullPackStyling.css" text="Supprimer un ticket" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="REMOVE" size="20" />
+         </graphic></Button>
+      <Button layoutX="439.0" layoutY="175.0" mnemonicParsing="false" onAction="#ModifierTic" prefHeight="25.0" prefWidth="148.0" stylesheets="@../css/fullPackStyling.css" text="Modifier un ticket" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="20" />
+         </graphic></Button>
+      <Button layoutX="437.0" layoutY="79.0" mnemonicParsing="false" onAction="#AjouterTicket" prefHeight="25.0" prefWidth="148.0" stylesheets="@../css/fullPackStyling.css" text="Ajouter un ticket" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+         </graphic></Button>
+      <Button layoutX="486.0" layoutY="345.0" mnemonicParsing="false" onAction="#Acceuil" style="-fx-background-color: white;" stylesheets="@../css/fullPackStyling.css" textFill="RED">
+         <graphic>
+            <FontAwesomeIconView fill="PURPLE" glyphName="ARROW_LEFT" size="20" wrappingWidth="17.333306670188904" />
+         </graphic></Button>
+      <TableView fx:id="TVevent" layoutY="256.0" prefHeight="122.0" prefWidth="227.0" stylesheets="@../Css/fullPackStyling.css">
+        <columns>
+          <TableColumn fx:id="TCeVENTID" prefWidth="226.0" text="ID" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

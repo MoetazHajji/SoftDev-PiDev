@@ -5,6 +5,7 @@
  */
 package edu.SprintJava.entities;
 
+import edu.SprintJava.enumm.Genre;
 import java.sql.Date;
 
 /**
@@ -21,9 +22,9 @@ public class Client {
     private String email;
     private String username;
     private String password;
-    private String genre;
+    private edu.SprintJava.enumm.Genre genre;
 
-    public Client(String nom, String prenom, Date date_naissance, String pays_ville,int mobile, String email,String username, String password, String genre) {
+    public Client(String nom, String prenom, Date date_naissance, String pays_ville,int mobile, String email,String username, String password, edu.SprintJava.enumm.Genre gn) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -33,7 +34,7 @@ public class Client {
         this.email = email;
         this.username = username;
         this.password=password;
-        this.genre = genre;
+        this.genre = gn;
     }
 
     public Client() {
@@ -75,7 +76,7 @@ public class Client {
         return mobile;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
@@ -107,7 +108,7 @@ public class Client {
         this.mobile = mobile;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(edu.SprintJava.enumm.Genre genre) {
         this.genre = genre;
     }
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="RBgold" prefHeight="563.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.ParticiperEvenementController">
+   <children>
+      <AnchorPane prefHeight="563.0" prefWidth="246.0" style="-fx-background-color: purple;">
+         <children>
+            <Button layoutY="2.0" mnemonicParsing="false" onAction="#BackToFrontEvent" stylesheets="@../Css/fullPackStyling.css">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="20" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="55.0" layoutY="96.0" size="40" />
+      <Label layoutX="103.0" layoutY="62.0" text="CULTUN" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="285.0" layoutY="259.0" text="Nombre de ticket" />
+      <TextField fx:id="TFNombreTicket" layoutX="399.0" layoutY="253.0" promptText="Nombre Tickes" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <Label layoutX="276.0" layoutY="153.0" text="Nom evenement :" />
+      <TextField fx:id="tfNom_event" layoutX="399.0" layoutY="147.0" promptText="Nombre Tickes" style="-fx-border-color: purple; -fx-border-width: 2;" styleClass="transparent" stylesheets="@../css/LoginClient.css" />
+      <RadioButton fx:id="RBgoldd" layoutX="418.0" layoutY="351.0" mnemonicParsing="false" onAction="#SommeGold" style="-fx-border-color: purple;" stylesheets="@../Css/fullPackStyling.css" text="Gold" />
+      <RadioButton fx:id="RBsilver" layoutX="510.0" layoutY="351.0" mnemonicParsing="false" onAction="#SommeSilver" style="-fx-border-color: purple;" text="Silver" />
+      <RadioButton fx:id="RBbronze" layoutX="591.0" layoutY="351.0" mnemonicParsing="false" onAction="#SommeBronze" text="Bronze" />
+      <Label layoutX="318.0" layoutY="351.0" text="Type" />
+      <Label fx:id="LBSommePrix" layoutX="338.0" layoutY="384.0" prefHeight="41.0" prefWidth="339.0" />
+      <Button layoutX="555.0" layoutY="452.0" mnemonicParsing="false" onAction="#AjouterTicket" prefHeight="29.0" prefWidth="105.0" stylesheets="@../Css/fullPackStyling.css" text="Confirmer" textFill="WHITE" />
+      <Line endX="456.0" layoutX="369.0" layoutY="90.0" startX="-100.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AffichActCLController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1300.0">
+         <children>
+            
+               
+                  <VBox prefHeight="600.0" prefWidth="435.0" styleClass="right-bar"  >
+                     <children>
+                        <HBox prefHeight="189.0" prefWidth="461.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="97.0" prefWidth="248.0" text="Restaurant" textOverrun="CENTER_ELLIPSIS" visible="false">
+                                 <font>
+                                    <Font name="Cambria Bold Italic" size="34.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="106.0" fitWidth="259.0">
+                                 <image>
+                                    <Image url="@../../../../../../Resteau1/src/images/logo.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="102.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="429.0">
+                           <children>
+                              <TextField fx:id="rechercheRestau" alignment="BOTTOM_LEFT" prefHeight="30.0" prefWidth="336.0" promptText="Type here to search" styleClass="shadow">
+                                 <font>
+                                    <Font name="Cambria" size="15.0" />
+                                 </font>
+                              </TextField>
+                              
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" prefHeight="288.0" prefWidth="390.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                              <ImageView fitHeight="261.0" fitWidth="412.0">
+                                 <image>
+                                    <Image url="@../../../../../../Resteau1/src/images/ow.jpg" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="99.0" prefWidth="416.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="48.0" prefWidth="413.0" text="CULTUN" textFill="#51063c" visible="false">
+                                       <font>
+                                          <Font name="Bell MT" size="40.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               
+               
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="63.0" prefWidth="819.0">
+                           <opaqueInsets>
+                              
+                           </opaqueInsets>
+                           <VBox.margin>
+                              
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="42.0" prefWidth="248.0" text="Bienvenue dans notre application" textFill="#750d5f">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="292.0" text="Notre Restaurant" textFill="#9e0191" textOverrun="LEADING_ELLIPSIS">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="35.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        
+                        <VBox alignment="BOTTOM_RIGHT" prefHeight="50.0" prefWidth="60.0" />
+                        <JFXListView fx:id="listViewRestau" />
+                     </children>
+                  </VBox>
+               
+            
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

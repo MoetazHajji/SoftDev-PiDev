@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.ShowRestauFormController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="516.0" prefWidth="876.0">
+         <children>
+            <TableView fx:id="TableViewRestau" layoutX="31.0" layoutY="148.0" prefHeight="309.0" prefWidth="821.0" stylesheets="@../Css/fullPackStyling.css" AnchorPane.topAnchor="148.0">
+               <columns>
+                  <TableColumn fx:id="coltypeR" prefWidth="94.0" text="Type Restau" />
+                  <TableColumn fx:id="colnomR" prefWidth="79.0" text="nom restau" />
+                  <TableColumn fx:id="coladresseR" prefWidth="97.0" text="Adresss " />
+                  <TableColumn fx:id="colPaysR" prefWidth="84.0" text="Pays" />
+                  <TableColumn fx:id="coltelR" prefWidth="82.0" text="Tel" />
+                  <TableColumn fx:id="colIdR" minWidth="0.0" prefWidth="99.0" text="ID" />
+                  <TableColumn fx:id="imgR" prefWidth="75.0" text="imgR" />
+                  <TableColumn fx:id="editcol" minWidth="0.0" prefWidth="285.0" />
+               </columns>
+            </TableView>
+            <Pane layoutX="-3.0" layoutY="64.0" prefHeight="5.0" prefWidth="866.0" style="-fx-background-color: PURPLE;" />
+            <Text fill="PURPLE" layoutX="231.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="liste restaurant" wrappingWidth="245.142578125">
+               <font>
+                  <Font name="Bradley Hand ITC" size="38.0" />
+               </font>
+            </Text>
+            
+            
+            <Pane layoutX="621.0" layoutY="90.42857360839844" />
+            <Button layoutX="32.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#AjoutRestau" prefHeight="25.0" prefWidth="77.0" stylesheets="@../Css/fullPackStyling.css" text="Ajouter " textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
+               </graphic></Button>
+            <TextField fx:id="rechercheRestau" layoutX="186.0" layoutY="104.0" onKeyTyped="#rechercheRestau" prefHeight="25.0" prefWidth="435.0" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+               <styleClass>
+                  <String fx:value="border" />
+                  <String fx:value="transparent" />
+               </styleClass></TextField>
+            <Button layoutX="649.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#listReservation" stylesheets="@../Css/fullPackStyling.css" text="Liste Reservations" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LIST" />
+               </graphic></Button>
+            <Button fx:id="pdf" layoutX="787.0" layoutY="104.0" mnemonicParsing="false" onAction="#pdf" prefHeight="25.0" prefWidth="50.0" stylesheets="@../Css/fullPackStyling.css" text="pdf" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button graphicTextGap="10.0" layoutX="2.0" layoutY="-6.0" mnemonicParsing="false" onAction="#RetourAdminPannel" stylesheets="@../Css/fullPackStyling.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="20" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AjouterReservationRFrontController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="401.0" prefWidth="610.0">
+         <children>
+            <TextField fx:id="lblidR" layoutX="160.0" layoutY="176.0" styleClass="add-btn" visible="false" />
+            <Label layoutX="15.0" layoutY="168.0" prefHeight="17.0" prefWidth="80.0" text="id resteaurant:" visible="false">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="216.0" text="nombre de personnes:">
+               <font>
+                  <Font name="Book Antiqua" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="283.0" text="Time:">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lblnbpR" layoutX="166.0" layoutY="212.0" prefHeight="25.0" prefWidth="128.0" style="-fx-border-width: 2;" stylesheets="@../Css/LoginClient.css">
+               <styleClass>
+                  <String fx:value="add-btn" />
+                  <String fx:value="border" />
+                  <String fx:value="transparent" />
+               </styleClass></TextField>
+            <Text layoutX="347.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" />
+            <HBox alignment="CENTER" layoutX="189.0" layoutY="6.0" prefHeight="53.0" prefWidth="200.0">
+               <children>
+                  <Label text="Reservation" textFill="#83077b">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" layoutX="435.0" prefHeight="60.0" prefWidth="175.0">
+               <children>
+                  <Label prefHeight="67.0" prefWidth="106.0" text="CULTUN" textFill="#c9c1c1">
+                     <font>
+                        <Font name="Bodoni MT Condensed" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+           
+            <ImageView fitHeight="69.0" fitWidth="212.0" layoutX="347.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
+            <DatePicker fx:id="lblDateR" layoutX="396.0" layoutY="212.0" style="-fx-border-color: purple;" />
+            <Button layoutX="435.0" layoutY="328.0" mnemonicParsing="false" onAction="#ReserverR" prefHeight="25.0" prefWidth="115.0" stylesheets="@../Css/fullPackStyling.css" text="Reserver" textFill="#e8e8e8" />
+            <JFXTimePicker fx:id="timer" defaultColor="PURPLE" layoutX="134.0" layoutY="279.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

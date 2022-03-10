@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="894.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.SprintJava.GUI.AfficherEventController">
+   <children>
+      <TableView fx:id="tvEvenement" prefHeight="449.0" prefWidth="690.0" stylesheets="@../css/fullPackStyling.css">
+        <columns>
+          <TableColumn fx:id="tcNom" prefWidth="34.0" text="Nom" />
+          <TableColumn fx:id="tcNbre_participants" prefWidth="155.0" text="Nombre de participants" />
+            <TableColumn fx:id="tcDate_deb" prefWidth="84.6666259765625" text="Date de debut" />
+            <TableColumn fx:id="tcDate_fin" prefWidth="68.0" text="Date de fin" />
+            <TableColumn fx:id="tcEmplacement" prefWidth="83.6666259765625" text="Emplacement" />
+            <TableColumn fx:id="tcDescription" prefWidth="91.0" text="Description" />
+            <TableColumn fx:id="tcTheme" prefWidth="79.0" text="Theme" />
+            <TableColumn fx:id="image" prefWidth="93.0" text="image" />
+        </columns>
+      </TableView>
+      <Button layoutX="710.0" layoutY="120.0" mnemonicParsing="false" onAction="#AjouterEvent" prefHeight="25.0" prefWidth="154.0" stylesheets="@../css/fullPackStyling.css" text="Ajouter un evenement" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+         </graphic></Button>
+      <Button layoutX="710.0" layoutY="288.0" mnemonicParsing="false" onAction="#supprimerEvenement" prefHeight="25.0" prefWidth="154.0" stylesheets="@../css/fullPackStyling.css" text="Supprimer un evenement" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="REMOVE" size="20" />
+         </graphic></Button>
+      <Button layoutX="710.0" layoutY="204.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="25.0" prefWidth="154.0" stylesheets="@../css/fullPackStyling.css" text="modifier un evenement" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="20" />
+         </graphic></Button>
+      <Button layoutX="783.0" layoutY="393.0" mnemonicParsing="false" onAction="#Acceuil" style="-fx-background-color: white;" stylesheets="@../css/fullPackStyling.css" textFill="RED">
+         <graphic>
+            <FontAwesomeIconView fill="PURPLE" glyphName="ARROW_LEFT" size="20" />
+         </graphic></Button>
+   </children>
+</AnchorPane>

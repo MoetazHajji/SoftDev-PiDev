@@ -7,6 +7,7 @@ package edu.SprintJava.GUI;
 
 import edu.SprintJava.entities.Client;
 import edu.SprintJava.entities.User;
+import edu.SprintJava.enumm.Genre;
 import edu.SprintJava.services.ClientCRUD;
 import edu.SprintJava.services.User_service;
 import edu.SprintJava.utils.ControleSaisie;
@@ -28,6 +29,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -56,15 +58,21 @@ public class AjouterClientController implements Initializable {
     private TextField TFPaysVille;
     @FXML
     private TextField TFGenre;
+    Genre gn;
     @FXML
     private DatePicker DateNaissance;
+    @FXML
+    private RadioButton Homme;
+    @FXML
+    private RadioButton Femme;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        gn=Genre.Male;
+        
     }    
 
     @FXML
@@ -94,7 +102,7 @@ public class AjouterClientController implements Initializable {
         }
         else{
             Client cl = new Client(TFNom.getText(), TFPrenom.getText(), dateD, TFPaysVille.getText(), Integer.parseInt(TFMobile.getText())
-                    , TFEmail.getText(), TFUsername.getText(), TFPassword.getText(), TFGenre.getText());
+                    , TFEmail.getText(), TFUsername.getText(), TFPassword.getText(), gn);
             clc.ajouterClient(cl);
             User_service us = new User_service();
             us.ajouterUser(new User(TFUsername.getText(),TFPassword.getText(),"Client"));
@@ -116,6 +124,16 @@ public class AjouterClientController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void GetGenre(ActionEvent event) {
+        if(Homme.isSelected()){
+              gn = Genre.Male;
+          }
+          if(Femme.isSelected()){
+              gn = Genre.Female;
+          }
     }
 
    

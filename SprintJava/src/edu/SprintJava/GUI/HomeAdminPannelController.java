@@ -172,6 +172,8 @@ public class HomeAdminPannelController implements Initializable {
     private ImageView ImgAvatar;
     @FXML
     private TableColumn<Livreur, Integer> TCid;
+    @FXML
+    private TableColumn<?, ?> TCidA;
 
     /*
      * Initializes the controller class.
@@ -186,13 +188,14 @@ public class HomeAdminPannelController implements Initializable {
         AttachementService as = new AttachementService();
         Attachement a = as.findById(Session.getUser().getId());
         //System.out.println((Session.getUser().getAvatar()));
-        File file = new File(a.getPath());
-        Image image = new Image(file.toURI().toString());
+        
+        //File file = new File(usersession.getAvatar());
+        //System.out.println(file); 
+        //Image image = new Image(file.toURI().toString());
 
         //System.out.println(usersession);
-        //Admin ad =adc.getAdmin(usersession.getMail());
         name.setText(usersession.getUsername());
-        ImgAvatar.setImage(image);
+        //ImgAvatar.setImage();
         //************ Affecter Role**************/
         RoleBox.setItems(Roles);
         RoleBox.setValue("Master");
@@ -310,7 +313,7 @@ public class HomeAdminPannelController implements Initializable {
 
     private void remplirTableAdmin(ObservableList<Admin> liste) {
         
-        TCid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TCidA.setCellValueFactory(new PropertyValueFactory<>("id"));
         TCNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         TCPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         TCCIN.setCellValueFactory(new PropertyValueFactory<>("cin"));
